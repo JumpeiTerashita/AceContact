@@ -7,6 +7,12 @@
 #include "SDKsound.h"
 #include "resource.h"
 #include "support\t2k_support.h"
+#include "Engine\GameObject.h"
+#include "Library\GraphicsManager.h"
+#include "Library\TextRenderer.h"
+
+GameObject* Test = new GameObject();
+GameObject* Test2 = new GameObject();
 
 //---------------------------------------------------------------------
 //
@@ -16,7 +22,7 @@ LPDIRECT3DTEXTURE9		g_pTex ;
 LPD3DXMESH				g_pMesh ;
 D3DXVECTOR3				g_rot ;
 D3DXVECTOR3				g_pos ;
-D3DXVECTOR3				g_scl(1,1,1);
+D3DXVECTOR3				g_scl;
 
 //---------------------------------------------------------------------
 //
@@ -67,6 +73,7 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	t2k::Support::createDeviece() ;
 
 
+
 	//-------------------------------------------------------------------------
 	// カメラ設定
 	D3DXMatrixLookAtLH( &gView, &vEyePt, &vLookatPt, &vUpVec );
@@ -77,8 +84,23 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 
 	//-------------------------------------------------------------------------
 	// X ファイル とテクスチャのロード
-	D3DXCreateTextureFromFile( pd3dDevice, L"spaceship_fighter_CLR.bmp", &g_pTex ) ;
-	D3DXLoadMeshFromX( L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, &g_pMesh ) ;
+	/*D3DXCreateTextureFromFile( pd3dDevice, L"spaceship_fighter_CLR.bmp", &g_pTex ) ;
+	D3DXLoadMeshFromX( L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, &g_pMesh ) ;*/
+	
+	TextRenderer * a = new TextRenderer();
+
+	a->GetTxtOutline();
+
+	
+
+	GraphicsManager::GetInstance()->AddTexture("Player",&Test->g_pTex);
+	GraphicsManager::GetInstance()->AddModel("Player", &Test->g_pMesh);
+
+	D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp",(&Test->g_pTex));
+	D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, (&Test->g_pMesh));
+
+	D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp", &Test2->g_pTex);
+	D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL,NULL, NULL, NULL, &Test2->g_pMesh);
 
 
     return S_OK;
@@ -104,20 +126,20 @@ HRESULT CALLBACK OnD3D9ResetDevice( IDirect3DDevice9* pd3dDevice, const D3DSURFA
 //--------------------------------------------------------------------------------------
 void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext )
 {
-	//g_rot.x += D3DXToRadian(1.0f) ;
-	//g_rot.y += D3DXToRadian(1.0f) ;
-	//g_rot.z += D3DXToRadian(1.0f) ;
+	Test->g_rot.x += D3DXToRadian(1.0f) ;
+	Test->g_rot.y += D3DXToRadian(1.0f) ;
+	Test->g_rot.z += D3DXToRadian(1.0f) ;
 
 	
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
 		t2k::Support::debugTrace("← カーソルを押した");
-		g_rot.z += D3DXToRadian(1.0f);
+		Test->g_rot.z += D3DXToRadian(1.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_RIGHT)) {
 		t2k::Support::debugTrace("→ カーソルを押した");
-		g_rot.z += D3DXToRadian(-1.0f);
+		Test->g_rot.z += D3DXToRadian(-1.0f);
 	}
 
 
@@ -153,41 +175,44 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
     // Clear the render target and the zbuffer 
     V( pd3dDevice->Clear( 0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_ARGB( 0, 45, 50, 170 ), 1.0f, 0 ) );
 
-	// ワールドマトリクス設定
-	D3DXMATRIX SclMtx, RotMtx, PosMtx, WldMtx ;
-	D3DXMatrixScaling( &SclMtx, g_scl.x, g_scl.y, g_scl.z );
+	//// ワールドマトリクス設定
+	//D3DXMATRIX SclMtx, RotMtx, PosMtx, WldMtx ;
+	//D3DXMatrixScaling( &SclMtx, g_scl.x, g_scl.y, g_scl.z );
 
-	D3DXMatrixRotationYawPitchRoll( &RotMtx, g_rot.y, g_rot.x, g_rot.z ) ;
-	D3DXMatrixTranslation( &PosMtx, g_pos.x, g_pos.y, g_pos.z ) ;
-	WldMtx = SclMtx * RotMtx * PosMtx ;
+	//D3DXMatrixRotationYawPitchRoll( &RotMtx, g_rot.y, g_rot.x, g_rot.z ) ;
+	//D3DXMatrixTranslation( &PosMtx, g_pos.x, g_pos.y, g_pos.z ) ;
+	//WldMtx = SclMtx * RotMtx * PosMtx ;
 
-	// テクスチャ適用
-	pd3dDevice->SetTexture( 0, g_pTex ) ;
+	//// テクスチャ適用
+	//pd3dDevice->SetTexture( 0, g_pTex ) ;
 
-	// 通常合成
-	pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE ) ;
-	pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1 ) ;
-	pd3dDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE ) ;
-	pd3dDevice->SetRenderState( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA ) ;	
-	pd3dDevice->SetRenderState( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA ) ;
+	//// 通常合成
+	//pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE ) ;
+	//pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1 ) ;
+	//pd3dDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE ) ;
+	//pd3dDevice->SetRenderState( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA ) ;	
+	//pd3dDevice->SetRenderState( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA ) ;
 
-	//ライティングOFF
-	pd3dDevice->SetRenderState( D3DRS_LIGHTING, FALSE );
-	pd3dDevice->LightEnable( 0, FALSE ) ;
+	////ライティングOFF
+	//pd3dDevice->SetRenderState( D3DRS_LIGHTING, FALSE );
+	//pd3dDevice->LightEnable( 0, FALSE ) ;
 
-	pd3dDevice->SetTransform( D3DTS_WORLD, &WldMtx );
+	//pd3dDevice->SetTransform( D3DTS_WORLD, &WldMtx );
 
-    // Render the scene
-    if( SUCCEEDED( pd3dDevice->BeginScene() ) )
-    {
-		g_pMesh->DrawSubset( 0 ) ;
-        V( pd3dDevice->EndScene() );
-    }
+ //   // Render the scene
+ //   if( SUCCEEDED( pd3dDevice->BeginScene() ) )
+ //   {
+	//	g_pMesh->DrawSubset( 0 ) ;
+ //       V( pd3dDevice->EndScene() );
+ //   }
 
+	Test->Render(pd3dDevice);
+	Test2->Render(pd3dDevice);
+	
 	static int a = 0 ; 
 	a++ ;
 	t2k::Support::renderString(5, 5, "TEST COUNT : %d", a );
-
+	t2k::Support::renderString(100, 100, "Ace Contact");
 }
 
 
@@ -251,7 +276,7 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
     DXUTInit( true, true ); // Parse the command line and show msgboxes
     DXUTSetHotkeyHandling( true, true, true );  // handle the default hotkeys
     DXUTSetCursorSettings( true, true ); // Show the cursor and clip it when in full screen
-    DXUTCreateWindow( L"EmptyProject" );
+    DXUTCreateWindow( L"AceContact" );
     DXUTCreateDevice( true, 640, 480 );
 
     // Start the render loop

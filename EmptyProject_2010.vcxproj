@@ -387,10 +387,14 @@
     <ClCompile Include="DXUT\Optional\SDKsound.cpp" />
     <ClCompile Include="DXUT\Optional\SDKwavefile.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
+    <ClCompile Include="Library\GraphicsManager.cpp" />
+    <ClCompile Include="Library\TextRenderer.cpp" />
     <ClCompile Include="support\t2k_support.cpp" />
     <ClInclude Include="DXUT\Optional\SDKsound.h" />
     <ClInclude Include="DXUT\Optional\SDKwavefile.h" />
     <ClInclude Include="Engine\GameObject.h" />
+    <ClInclude Include="Library\GraphicsManager.h" />
+    <ClInclude Include="Library\TextRenderer.h" />
     <ClInclude Include="support\t2k_sound.h" />
     <ClInclude Include="support\t2k_support.h" />
     <None Include="DXUT\Optional\directx.ico" />

@@ -1,4 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (EmptyProject.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  ProjectCore.cpp
-  EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\DirectX9スタートアッププロジェクト\Debug\AceContact.exe
-  EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\DirectX9スタートアッププロジェクト\Debug\AceContact.pdb (Full PDB)
+  TextRenderer.cpp
+c:\users\vantan\documents\atelier\children\acecontact\library\textrenderer.cpp(24): warning C4189: 'DeviceContextHandle': ローカル変数が初期化されましたが、参照されていません
+  EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.exe
+  EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.pdb (Full PDB)

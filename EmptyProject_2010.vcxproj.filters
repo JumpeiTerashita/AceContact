@@ -18,6 +18,9 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{33e1720e-0016-48bd-b7f8-0bc6815078e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{737e2197-35c1-4056-877e-290d18dac103}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -92,6 +95,12 @@
     <ClCompile Include="Engine\GameObject.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Library\GraphicsManager.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TextRenderer.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
@@ -108,6 +117,12 @@
     </ClInclude>
     <ClInclude Include="Engine\GameObject.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\GraphicsManager.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TextRenderer.h">
+      <Filter>Library</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
