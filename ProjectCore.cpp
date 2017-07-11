@@ -9,6 +9,7 @@
 #include "support\t2k_support.h"
 #include "Engine\GameObject.h"
 #include "Engine\GameObjectManager.h"
+#include "Engine\CameraManager.h"
 #include "Library\GraphicsManager.h"
 #include "Game\Player.h"
 
@@ -25,14 +26,7 @@ D3DXVECTOR3				g_rot ;
 D3DXVECTOR3				g_pos ;
 D3DXVECTOR3				g_scl;
 
-//---------------------------------------------------------------------
-//
-// ƒJƒƒ‰—p
-//
-D3DXVECTOR3		vEyePt( 0.0f, 3.0f, -20.0f );
-D3DXVECTOR3		vLookatPt( 0.0f, 0.0f, 0.0f );
-D3DXVECTOR3		vUpVec( 0.0f, 1.0f, 0.0f );
-D3DXMATRIX		gView, gProj ;
+
 
 
 
@@ -77,10 +71,11 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 
 	//-------------------------------------------------------------------------
 	// ƒJƒƒ‰Ý’è
-	D3DXMatrixLookAtLH( &gView, &vEyePt, &vLookatPt, &vUpVec );
-	pd3dDevice->SetTransform( D3DTS_VIEW, &gView );
-   	D3DXMatrixPerspectiveFovLH( &gProj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f );
-	pd3dDevice->SetTransform( D3DTS_PROJECTION, &gProj ) ;
+	CameraManager* Camera = CameraManager::GetInstance();
+	D3DXMatrixLookAtLH( &Camera->gView, &Camera->vEyePt, &Camera->vLookatPt, &Camera->vUpVec );
+	pd3dDevice->SetTransform( D3DTS_VIEW, &Camera->gView );
+   	D3DXMatrixPerspectiveFovLH( &Camera->gProj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f );
+	pd3dDevice->SetTransform( D3DTS_PROJECTION, &Camera->gProj ) ;
 
 
 	//-------------------------------------------------------------------------
@@ -148,6 +143,10 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
 		//player->g_rot.z += D3DXToRadian(-1.0f);
 	}
 
+	if (DXUTIsKeyDown('Z')) {
+		t2k::Support::debugTrace("Z ‚ð‰Ÿ‚µ‚Ä‚¢‚é");
+		CameraManager::GetInstance()->vEyePt.x += 1.0f;
+	}
 
 
 	/*if( DXUTWasKeyPressed('A') ) {
