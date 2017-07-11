@@ -8,11 +8,12 @@
 #include "resource.h"
 #include "support\t2k_support.h"
 #include "Engine\GameObject.h"
+#include "Engine\GameObjectManager.h"
 #include "Library\GraphicsManager.h"
-#include "Library\TextRenderer.h"
+#include "Game\Player.h"
 
-GameObject* Test = new GameObject();
-GameObject* Test2 = new GameObject();
+
+
 
 //---------------------------------------------------------------------
 //
@@ -28,7 +29,7 @@ D3DXVECTOR3				g_scl;
 //
 // カメラ用
 //
-D3DXVECTOR3		vEyePt( 0.0f, 3.0f, -15.0f );
+D3DXVECTOR3		vEyePt( 0.0f, 3.0f, -20.0f );
 D3DXVECTOR3		vLookatPt( 0.0f, 0.0f, 0.0f );
 D3DXVECTOR3		vUpVec( 0.0f, 1.0f, 0.0f );
 D3DXMATRIX		gView, gProj ;
@@ -87,20 +88,25 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	/*D3DXCreateTextureFromFile( pd3dDevice, L"spaceship_fighter_CLR.bmp", &g_pTex ) ;
 	D3DXLoadMeshFromX( L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, &g_pMesh ) ;*/
 	
-	TextRenderer * a = new TextRenderer();
+	/*TextRenderer * a = new TextRenderer();
 
-	a->GetTxtOutline();
+	a->GetTxtOutline();*/
 
 	
+	GameObjectManager::GetInstance()->Setpd3dDevice(pd3dDevice);
+	Player* player = new Player();
+	
+	GameObjectManager::GetInstance()->AddObject(player);
+	
 
-	GraphicsManager::GetInstance()->AddTexture("Player",&Test->g_pTex);
-	GraphicsManager::GetInstance()->AddModel("Player", &Test->g_pMesh);
+	GraphicsManager::GetInstance()->AddTexture("Player", &player->g_pTex);
+	GraphicsManager::GetInstance()->AddModel("Player", &player->g_pMesh);
 
-	D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp",(&Test->g_pTex));
-	D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, (&Test->g_pMesh));
+	D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp",(&player->g_pTex));
+	D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, (&player->g_pMesh));
 
-	D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp", &Test2->g_pTex);
-	D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL,NULL, NULL, NULL, &Test2->g_pMesh);
+	//D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp", &Test2->g_pTex);
+	//D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL,NULL, NULL, NULL, &Test2->g_pMesh);
 
 
     return S_OK;
@@ -126,20 +132,20 @@ HRESULT CALLBACK OnD3D9ResetDevice( IDirect3DDevice9* pd3dDevice, const D3DSURFA
 //--------------------------------------------------------------------------------------
 void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext )
 {
-	Test->g_rot.x += D3DXToRadian(1.0f) ;
-	Test->g_rot.y += D3DXToRadian(1.0f) ;
-	Test->g_rot.z += D3DXToRadian(1.0f) ;
+	GameObjectManager::GetInstance()->Update();
+
+	
 
 	
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
 		t2k::Support::debugTrace("← カーソルを押した");
-		Test->g_rot.z += D3DXToRadian(1.0f);
+		//player->g_rot.z += D3DXToRadian(1.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_RIGHT)) {
 		t2k::Support::debugTrace("→ カーソルを押した");
-		Test->g_rot.z += D3DXToRadian(-1.0f);
+		//player->g_rot.z += D3DXToRadian(-1.0f);
 	}
 
 
@@ -206,13 +212,12 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
  //       V( pd3dDevice->EndScene() );
  //   }
 
-	Test->Render(pd3dDevice);
-	Test2->Render(pd3dDevice);
+	GameObjectManager::GetInstance()->Render();
 	
 	static int a = 0 ; 
 	a++ ;
 	t2k::Support::renderString(5, 5, "TEST COUNT : %d", a );
-	t2k::Support::renderString(100, 100, "Ace Contact");
+	//t2k::Support::renderString(100, 100, "Ace Contact");
 }
 
 

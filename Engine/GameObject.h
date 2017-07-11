@@ -17,7 +17,8 @@ public:
 	D3DXVECTOR3				g_pos;
 	D3DXVECTOR3				g_scl;
 
-	void Update();
+	virtual void Update() = 0;
+
 	void Render(IDirect3DDevice9* pd3dDevice);
 };
 

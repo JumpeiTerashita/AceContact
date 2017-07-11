@@ -21,6 +21,9 @@
     <Filter Include="Library">
       <UniqueIdentifier>{737e2197-35c1-4056-877e-290d18dac103}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{ee48282a-aadd-4cdf-9915-699c185b93ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -95,11 +98,14 @@
     <ClCompile Include="Engine\GameObject.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\GameObjectManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
     <ClCompile Include="Library\GraphicsManager.cpp">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="Library\TextRenderer.cpp">
-      <Filter>Library</Filter>
+    <ClCompile Include="Game\Player.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,11 +124,14 @@
     <ClInclude Include="Engine\GameObject.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\GameObjectManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
     <ClInclude Include="Library\GraphicsManager.h">
       <Filter>Library</Filter>
     </ClInclude>
-    <ClInclude Include="Library\TextRenderer.h">
-      <Filter>Library</Filter>
+    <ClInclude Include="Game\Player.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

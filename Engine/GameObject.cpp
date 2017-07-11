@@ -1,6 +1,6 @@
 #include "DXUT.h"
 #include "GameObject.h"
-
+#include "../Library/GraphicsManager.h"
 
 GameObject::GameObject()
 {
@@ -14,10 +14,6 @@ GameObject::~GameObject()
 {
 }
 
-void GameObject::Update()
-{
-
-}
 void GameObject::Render(IDirect3DDevice9* pd3dDevice)
 {
 	HRESULT hr;
