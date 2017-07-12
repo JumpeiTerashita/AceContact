@@ -110,6 +110,9 @@
     <ClCompile Include="Engine\CameraManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Library\InputManager.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
@@ -140,6 +143,12 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Library\Sequence.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Singleton.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\InputManager.h">
       <Filter>Library</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,12 +14,3 @@ CameraManager::CameraManager()
 CameraManager::~CameraManager()
 {
 }
-
-CameraManager* CameraManager::GetInstance()
-{
-	if (nullptr == CameraManager::Instance)
-	{
-		CameraManager::Instance = new CameraManager();
-	}
-	return CameraManager::Instance;
-}

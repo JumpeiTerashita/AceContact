@@ -12,7 +12,7 @@
 #include "Engine\CameraManager.h"
 #include "Library\GraphicsManager.h"
 #include "Game\Player.h"
-
+#include "Library\InputManager.h"
 
 
 
@@ -83,11 +83,6 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	/*D3DXCreateTextureFromFile( pd3dDevice, L"spaceship_fighter_CLR.bmp", &g_pTex ) ;
 	D3DXLoadMeshFromX( L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, &g_pMesh ) ;*/
 	
-	/*TextRenderer * a = new TextRenderer();
-
-	a->GetTxtOutline();*/
-
-	
 	GameObjectManager::GetInstance()->Setpd3dDevice(pd3dDevice);
 	Player* player = new Player();
 	
@@ -103,6 +98,9 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	//D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp", &Test2->g_pTex);
 	//D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL,NULL, NULL, NULL, &Test2->g_pMesh);
 
+
+	InputManager::InputManager(1);
+	
 
     return S_OK;
 }
@@ -127,10 +125,14 @@ HRESULT CALLBACK OnD3D9ResetDevice( IDirect3DDevice9* pd3dDevice, const D3DSURFA
 //--------------------------------------------------------------------------------------
 void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext )
 {
+	XINPUT_STATE InputState = InputManager::GetInstance()->GetState();
 	GameObjectManager::GetInstance()->Update();
 
 	
-
+	if (InputState.Gamepad.wButtons&XINPUT_GAMEPAD_A)
+	{
+		t2k::Support::debugTrace("Aƒ{ƒ^ƒ“‚È‚¤");
+	}
 	
 
 	if (DXUTIsKeyDown(VK_LEFT)) {

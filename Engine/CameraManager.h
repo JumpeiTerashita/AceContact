@@ -1,5 +1,6 @@
 #pragma once
-class CameraManager
+#include "../Library/Singleton.h"
+class CameraManager : public Singleton<CameraManager>
 {
 public:
 	D3DXVECTOR3		vEyePt;
@@ -9,8 +10,6 @@ public:
 
 	CameraManager();
 	~CameraManager();
-	static CameraManager* GetInstance();
 private:
-	static CameraManager* Instance;
 };
 
