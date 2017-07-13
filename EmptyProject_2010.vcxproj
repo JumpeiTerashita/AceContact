@@ -386,21 +386,13 @@
   <ItemGroup>
     <ClCompile Include="DXUT\Optional\SDKsound.cpp" />
     <ClCompile Include="DXUT\Optional\SDKwavefile.cpp" />
-    <ClCompile Include="Engine\CameraManager.cpp" />
-    <ClCompile Include="Engine\GameObject.cpp" />
-    <ClCompile Include="Engine\GameObjectManager.cpp" />
-    <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Library\GraphicsManager.cpp" />
-    <ClCompile Include="Library\InputManager.cpp" />
+    <ClCompile Include="Library\RenderingObject.cpp" />
     <ClCompile Include="support\t2k_support.cpp" />
     <ClInclude Include="DXUT\Optional\SDKsound.h" />
     <ClInclude Include="DXUT\Optional\SDKwavefile.h" />
-    <ClInclude Include="Engine\CameraManager.h" />
-    <ClInclude Include="Engine\GameObject.h" />
-    <ClInclude Include="Engine\GameObjectManager.h" />
-    <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Library\GraphicsManager.h" />
-    <ClInclude Include="Library\InputManager.h" />
+    <ClInclude Include="Library\RenderingObject.h" />
     <ClInclude Include="Library\Sequence.h" />
     <ClInclude Include="Library\Singleton.h" />
     <ClInclude Include="support\t2k_sound.h" />

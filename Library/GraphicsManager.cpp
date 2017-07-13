@@ -1,4 +1,3 @@
-#include <map> 
 #include "DXUT.h"
 #include "GraphicsManager.h"
 
@@ -13,25 +12,19 @@ GraphicsManager::~GraphicsManager()
 {
 }
 
-
-void GraphicsManager::AddTexture(std::string _name, LPDIRECT3DTEXTURE9* _tex)
+void GraphicsManager::Render(IDirect3DDevice9* pd3dDevice)
 {
-	Map_g_pTex.insert(std::make_pair(_name,*_tex));
-}
-
-void GraphicsManager::AddModel(std::string _name, LPD3DXMESH* _xmodel)
-{
-	Map_g_pMesh.insert(std::make_pair(_name, *_xmodel));
-}
-
-LPDIRECT3DTEXTURE9* GraphicsManager::GetTexture(std::string _name)
-{
-	return &Map_g_pTex[_name];
-}
-
-LPD3DXMESH*	GraphicsManager::GetModel(std::string _name)
-{
-	return &Map_g_pMesh[_name];
+	std::list< RenderingObject* >::iterator it = RenderingList.begin();
+	while (it != RenderingList.end()) {
+		(*it)->Render(pd3dDevice);
+		/*if (0 == (*it)->getLifeTime())
+		{
+			delete (*it);
+			it = objects.erase(it);
+			continue;
+		}*/
+		it++;
+	}
 }
 
 

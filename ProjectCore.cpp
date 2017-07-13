@@ -7,12 +7,7 @@
 #include "SDKsound.h"
 #include "resource.h"
 #include "support\t2k_support.h"
-#include "Engine\GameObject.h"
-#include "Engine\GameObjectManager.h"
-#include "Engine\CameraManager.h"
 #include "Library\GraphicsManager.h"
-#include "Game\Player.h"
-#include "Library\InputManager.h"
 
 
 
@@ -27,7 +22,14 @@ D3DXVECTOR3				g_pos ;
 D3DXVECTOR3				g_scl;
 
 
-
+//---------------------------------------------------------------------
+//
+// カメラ用
+//
+D3DXVECTOR3		vEyePt(0.0f, 300.0f, -1500.0f);
+D3DXVECTOR3		vLookatPt(0.0f, 0.0f, 0.0f);
+D3DXVECTOR3		vUpVec(0.0f, 1.0f, 0.0f);
+D3DXMATRIX		gView, gProj;
 
 
 
@@ -71,11 +73,10 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 
 	//-------------------------------------------------------------------------
 	// カメラ設定
-	CameraManager* Camera = CameraManager::GetInstance();
-	D3DXMatrixLookAtLH( &Camera->gView, &Camera->vEyePt, &Camera->vLookatPt, &Camera->vUpVec );
-	pd3dDevice->SetTransform( D3DTS_VIEW, &Camera->gView );
-   	D3DXMatrixPerspectiveFovLH( &Camera->gProj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f );
-	pd3dDevice->SetTransform( D3DTS_PROJECTION, &Camera->gProj ) ;
+	D3DXMatrixLookAtLH( &gView, &vEyePt, &vLookatPt, &vUpVec );
+	pd3dDevice->SetTransform( D3DTS_VIEW, &gView );
+   	D3DXMatrixPerspectiveFovLH( &gProj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f );
+	pd3dDevice->SetTransform( D3DTS_PROJECTION, &gProj ) ;
 
 
 	//-------------------------------------------------------------------------
@@ -83,23 +84,14 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	/*D3DXCreateTextureFromFile( pd3dDevice, L"spaceship_fighter_CLR.bmp", &g_pTex ) ;
 	D3DXLoadMeshFromX( L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, &g_pMesh ) ;*/
 	
-	GameObjectManager::GetInstance()->Setpd3dDevice(pd3dDevice);
-	Player* player = new Player();
-	
-	GameObjectManager::GetInstance()->AddObject(player);
-	
 
-	GraphicsManager::GetInstance()->AddTexture("Player", &player->g_pTex);
-	GraphicsManager::GetInstance()->AddModel("Player", &player->g_pMesh);
-
-	D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp",(&player->g_pTex));
+	/*D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp",(&player->g_pTex));
 	D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL, NULL, NULL, NULL, (&player->g_pMesh));
-
+*/
 	//D3DXCreateTextureFromFile(pd3dDevice, L"spaceship_fighter_CLR.bmp", &Test2->g_pTex);
 	//D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, pd3dDevice, NULL,NULL, NULL, NULL, &Test2->g_pMesh);
 
 
-	InputManager::InputManager(1);
 	
 
     return S_OK;
@@ -125,14 +117,8 @@ HRESULT CALLBACK OnD3D9ResetDevice( IDirect3DDevice9* pd3dDevice, const D3DSURFA
 //--------------------------------------------------------------------------------------
 void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext )
 {
-	XINPUT_STATE InputState = InputManager::GetInstance()->GetState();
-	GameObjectManager::GetInstance()->Update();
-
 	
-	if (InputState.Gamepad.wButtons&XINPUT_GAMEPAD_A)
-	{
-		t2k::Support::debugTrace("Aボタンなう");
-	}
+	
 	
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
@@ -144,13 +130,6 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
 		t2k::Support::debugTrace("→ カーソルを押した");
 		//player->g_rot.z += D3DXToRadian(-1.0f);
 	}
-
-	if (DXUTIsKeyDown('Z')) {
-	
-		CameraManager::GetInstance()->vEyePt.x += 1.0f;
-		t2k::Support::debugTrace("%f", CameraManager::GetInstance()->vEyePt.x);
-	}
-
 
 	/*if( DXUTWasKeyPressed('A') ) {
 		t2k::Support::debugTrace("A を押した") ;
@@ -183,6 +162,8 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
     // Clear the render target and the zbuffer 
     V( pd3dDevice->Clear( 0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_ARGB( 0, 45, 50, 170 ), 1.0f, 0 ) );
 
+
+	GraphicsManager::GetInstance()->Render(pd3dDevice);
 	//// ワールドマトリクス設定
 	//D3DXMATRIX SclMtx, RotMtx, PosMtx, WldMtx ;
 	//D3DXMatrixScaling( &SclMtx, g_scl.x, g_scl.y, g_scl.z );
@@ -213,8 +194,7 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 	//	g_pMesh->DrawSubset( 0 ) ;
  //       V( pd3dDevice->EndScene() );
  //   }
-
-	GameObjectManager::GetInstance()->Render();
+	
 	
 	static int a = 0 ; 
 	a++ ;
