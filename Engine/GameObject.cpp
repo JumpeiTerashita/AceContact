@@ -16,6 +16,7 @@ GameObject::~GameObject()
 
 void GameObject::Render(IDirect3DDevice9* pd3dDevice)
 {
+	// TODO 描画関連　GraphicsManager
 	HRESULT hr;
 	// ワールドマトリクス設定
 	D3DXMATRIX SclMtx, RotMtx, PosMtx, WldMtx;

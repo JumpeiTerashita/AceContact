@@ -146,8 +146,9 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
 	}
 
 	if (DXUTIsKeyDown('Z')) {
-		t2k::Support::debugTrace("Z ‚ð‰Ÿ‚µ‚Ä‚¢‚é");
+	
 		CameraManager::GetInstance()->vEyePt.x += 1.0f;
+		t2k::Support::debugTrace("%f", CameraManager::GetInstance()->vEyePt.x);
 	}
 
 
