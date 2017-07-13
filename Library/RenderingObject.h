@@ -11,6 +11,6 @@ public:
 	D3DXVECTOR3				Scl;
 	bool isEnable;
 	void Render(IDirect3DDevice9* pd3dDevice);
-
+	void AddRenderList();
 };
 

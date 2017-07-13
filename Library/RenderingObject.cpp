@@ -1,6 +1,6 @@
 #include "DXUT.h"
 #include "RenderingObject.h"
-
+#include "GraphicsManager.h"
 
 RenderingObject::RenderingObject()
 {
@@ -51,4 +51,9 @@ void RenderingObject::Render(IDirect3DDevice9* pd3dDevice)
 		Mesh->DrawSubset( 0 ) ;
 	       V( pd3dDevice->EndScene() );
 	   }
+}
+
+void RenderingObject::AddRenderList()
+{
+	GraphicsManager::GetInstance()->AddList(this);
 }

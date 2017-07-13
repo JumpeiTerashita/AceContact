@@ -69,7 +69,7 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	// これは消さない
 	t2k::Support::createDeviece() ;
 
-
+	GraphicsManager::GetInstance()->SetDevice(pd3dDevice);
 
 	//-------------------------------------------------------------------------
 	// カメラ設定
@@ -163,7 +163,7 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
     V( pd3dDevice->Clear( 0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_ARGB( 0, 45, 50, 170 ), 1.0f, 0 ) );
 
 
-	GraphicsManager::GetInstance()->Render(pd3dDevice);
+	GraphicsManager::GetInstance()->Render();
 	//// ワールドマトリクス設定
 	//D3DXMATRIX SclMtx, RotMtx, PosMtx, WldMtx ;
 	//D3DXMatrixScaling( &SclMtx, g_scl.x, g_scl.y, g_scl.z );
