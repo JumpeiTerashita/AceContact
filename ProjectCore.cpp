@@ -8,8 +8,8 @@
 #include "resource.h"
 #include "support\t2k_support.h"
 #include "Library\GraphicsManager.h"
-
-
+#include "Engine\GameObjectManager.h"
+#include "Game\Player.h"
 
 //---------------------------------------------------------------------
 //
@@ -26,7 +26,7 @@ D3DXVECTOR3				g_scl;
 //
 // ƒJƒƒ‰—p
 //
-D3DXVECTOR3		vEyePt(0.0f, 300.0f, -1500.0f);
+D3DXVECTOR3		vEyePt(0.0f, 3.0f, -15.0f);
 D3DXVECTOR3		vLookatPt(0.0f, 0.0f, 0.0f);
 D3DXVECTOR3		vUpVec(0.0f, 1.0f, 0.0f);
 D3DXMATRIX		gView, gProj;
@@ -70,6 +70,7 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	t2k::Support::createDeviece() ;
 
 	GraphicsManager::GetInstance()->SetDevice(pd3dDevice);
+	Player* PlayerTest = new Player();
 
 	//-------------------------------------------------------------------------
 	// ƒJƒƒ‰Ý’è
@@ -117,7 +118,7 @@ HRESULT CALLBACK OnD3D9ResetDevice( IDirect3DDevice9* pd3dDevice, const D3DSURFA
 //--------------------------------------------------------------------------------------
 void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext )
 {
-	
+	GameObjectManager::GetInstance()->Update();
 	
 	
 
