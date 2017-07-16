@@ -9,6 +9,7 @@
 #include "support\t2k_support.h"
 #include "Library\GraphicsManager.h"
 #include "Engine\GameObjectManager.h"
+#include "Engine\GameCamera.h"
 #include "Game\Player.h"
 
 //---------------------------------------------------------------------
@@ -72,12 +73,13 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	GraphicsManager::GetInstance()->SetDevice(pd3dDevice);
 	Player* PlayerTest = new Player();
 
-	//-------------------------------------------------------------------------
-	// ƒJƒƒ‰Ý’è
-	D3DXMatrixLookAtLH( &gView, &vEyePt, &vLookatPt, &vUpVec );
-	pd3dDevice->SetTransform( D3DTS_VIEW, &gView );
-   	D3DXMatrixPerspectiveFovLH( &gProj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f );
-	pd3dDevice->SetTransform( D3DTS_PROJECTION, &gProj ) ;
+	GameCamera::GetInstance()->CameraStatus.SetCamera(pd3dDevice);
+	////-------------------------------------------------------------------------
+	//// ƒJƒƒ‰Ý’è
+	//D3DXMatrixLookAtLH( &gView, &vEyePt, &vLookatPt, &vUpVec );
+	//pd3dDevice->SetTransform( D3DTS_VIEW, &gView );
+ //  	D3DXMatrixPerspectiveFovLH( &gProj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f );
+	//pd3dDevice->SetTransform( D3DTS_PROJECTION, &gProj ) ;
 
 
 	//-------------------------------------------------------------------------

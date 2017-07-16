@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (EmptyProject.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  ProjectCore.cpp
-c:\users\vantan\documents\atelier\children\acecontact\projectcore.cpp(73): warning C4189: 'PlayerTest': ローカル変数が初期化されましたが、参照されていません
+  GameCamera.cpp
+c:\users\vantan\documents\atelier\children\acecontact\engine\gamecamera.cpp(5): warning C4356: 'Singleton<GameCamera>::Instance': 静的データ メンバーは派生クラスを使って初期化できません。
   EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.exe
   EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.pdb (Full PDB)

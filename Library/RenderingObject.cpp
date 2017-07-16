@@ -13,6 +13,8 @@ RenderingObject::RenderingObject()
 
 RenderingObject::~RenderingObject()
 {
+	Tex->Release();
+	Mesh->Release();
 }
 
 void RenderingObject::Render(IDirect3DDevice9* pd3dDevice)
