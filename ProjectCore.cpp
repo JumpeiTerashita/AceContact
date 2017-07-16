@@ -71,9 +71,14 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	t2k::Support::createDeviece() ;
 
 	GraphicsManager::GetInstance()->SetDevice(pd3dDevice);
-	Player* PlayerTest = new Player();
+	
 
 	GameCamera::GetInstance()->CameraStatus.SetCamera(pd3dDevice);
+
+	Player* PlayerTest = new Player();
+
+	//Player* PlayerTest2 = new Player();
+
 	////-------------------------------------------------------------------------
 	//// カメラ設定
 	//D3DXMatrixLookAtLH( &gView, &vEyePt, &vLookatPt, &vUpVec );
@@ -122,11 +127,17 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
 {
 	GameObjectManager::GetInstance()->Update();
 	
+	if( DXUTWasKeyPressed('A') ) {
+
+	t2k::Support::debugTrace("カメラモード変更") ;
+	if (GameCamera::GetInstance()->CameraMode == 0) GameCamera::GetInstance()->CameraMode = 1;
+	else GameCamera::GetInstance()->CameraMode = 0;
+
 	
+	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
 		t2k::Support::debugTrace("← カーソルを押した");
-		//player->g_rot.z += D3DXToRadian(1.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_RIGHT)) {

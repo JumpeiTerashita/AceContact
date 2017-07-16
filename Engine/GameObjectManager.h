@@ -13,6 +13,8 @@ public:
 	void Update();
 	std::list<GameObject*> LogicList;
 	inline void AddList(GameObject* _pObject) { LogicList.push_back(_pObject); }
+	
+private:
 	std::map<std::string, GameObject*> LogicMap;
 };
 

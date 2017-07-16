@@ -6,6 +6,7 @@
 class GameCamera :public GameObject,public Singleton<GameCamera>
 {
 public:
+	int CameraMode;
 	Camera CameraStatus;
 	GameCamera();
 	~GameCamera();

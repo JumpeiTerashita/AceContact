@@ -8,5 +8,8 @@ public:
 	~Player();
 	RenderingObject PlayerRender;
 	void Update();
+private:
+	void Move();
+	void SetData();
 };
 
