@@ -27,4 +27,12 @@ void GameObjectManager::Update()
 		}*/
 		it++;
 	}
+	
+}
+
+bool GameObjectManager::IsInLogicMap(std::string _name)
+{
+	auto itr = LogicMap.find(_name);
+	if (itr != LogicMap.end()) return true;
+	else return false;
 }

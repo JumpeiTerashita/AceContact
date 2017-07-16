@@ -12,27 +12,8 @@
 #include "Engine\GameCamera.h"
 #include "Game\Player.h"
 
-//---------------------------------------------------------------------
-//
-// X ファイル
-//
-LPDIRECT3DTEXTURE9		g_pTex ;
-LPD3DXMESH				g_pMesh ;
-D3DXVECTOR3				g_rot ;
-D3DXVECTOR3				g_pos ;
-D3DXVECTOR3				g_scl;
-
-
-//---------------------------------------------------------------------
-//
-// カメラ用
-//
-D3DXVECTOR3		vEyePt(0.0f, 3.0f, -15.0f);
-D3DXVECTOR3		vLookatPt(0.0f, 0.0f, 0.0f);
-D3DXVECTOR3		vUpVec(0.0f, 1.0f, 0.0f);
-D3DXMATRIX		gView, gProj;
-
-
+LPDIRECT3DTEXTURE9		g_pTex;
+LPD3DXMESH				g_pMesh;
 
 //--------------------------------------------------------------------------------------
 // Rejects any D3D9 devices that aren't acceptable to the app by returning false
@@ -145,10 +126,13 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
 		//player->g_rot.z += D3DXToRadian(-1.0f);
 	}
 
-	/*if( DXUTWasKeyPressed('A') ) {
-		t2k::Support::debugTrace("A を押した") ;
-		t2k::Support::playSoundBgm("bgm1.wav") ;
-	}*/
+	if( DXUTWasKeyPressed('X') ) {
+		//	LogicMap Test
+		if (GameObjectManager::GetInstance()->IsInLogicMap("Player"))
+		{
+			t2k::Support::debugTrace("Playerは　ある！");
+		}
+	}
 
 	//if( DXUTWasKeyPressed( VK_LEFT ) ) {
 	//	t2k::Support::debugTrace("← カーソルを押した") ;
@@ -243,7 +227,7 @@ void CALLBACK OnD3D9DestroyDevice( void* pUserContext )
 {
 
 	g_pTex->Release() ;
-	g_pMesh->Release() ;
+	g_pMesh->Release();
 
 	// これは消さない
 	t2k::Support::destroyDevice() ;

@@ -5,6 +5,7 @@
 
 Player::Player()
 {
+	ObjectName = "Player";
 	PlayerRender.Pos = D3DXVECTOR3(0, 0, 0);
 	PlayerRender.Rot = D3DXVECTOR3(0, 0, 0);
 	PlayerRender.Scl = D3DXVECTOR3(1, 1, 1);
@@ -15,35 +16,37 @@ Player::Player()
 
 Player::~Player()
 {
+	PlayerRender.Tex->Release();
+	PlayerRender.Mesh->Release();
 }
 
 void Player::SetData()
 {
 	GraphicsManager* Graphic = GraphicsManager::GetInstance();
 
-	if (Graphic->IsInRenderingTexMap("spaceship_fighter_CLR.bmp"))
+	if (Graphic->IsInRenderingTexMap("SpaceShip_One.bmp"))
 	{
-		PlayerRender.Tex = *(Graphic->GetTexture("spaceship_fighter_CLR.bmp"));
+		PlayerRender.Tex = *(Graphic->GetTexture("SpaceShip_One.bmp"));
 	}
 	else 
 	{
-		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"spaceship_fighter_CLR.bmp", &PlayerRender.Tex);
-		Graphic->AddTexture("spaceship_fighter_CLR.bmp",&PlayerRender.Tex);
+		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"SpaceShip_One.bmp", &PlayerRender.Tex);
+		Graphic->AddTexture("SpaceShip_One.bmp",&PlayerRender.Tex);
 	}
 
-	if (Graphic->IsInRenderingModelMap("SpaceShip_Duo.x"))
+	if (Graphic->IsInRenderingModelMap("SpaceShip_One.x"))
 	{
-		PlayerRender.Mesh = *(Graphic->GetModel("SpaceShip_Duo.x"));
+		PlayerRender.Mesh = *(Graphic->GetModel("SpaceShip_One.x"));
 	}
 	else
 	{
-		D3DXLoadMeshFromX(L"SpaceShip_Duo.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &PlayerRender.Mesh);
-		Graphic->AddModel("SpaceShip_Duo.x", &PlayerRender.Mesh);
+		D3DXLoadMeshFromX(L"SpaceShip_One.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &PlayerRender.Mesh);
+		Graphic->AddModel("SpaceShip_One.x", &PlayerRender.Mesh);
 	}
 
 	PlayerRender.AddRenderList();
 	AddLogicList();
-	
+	AddLogicMap(ObjectName);
 }
 
 void Player::Update()

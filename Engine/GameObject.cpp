@@ -4,6 +4,7 @@
 
 GameObject::GameObject()
 {
+	ObjectName = "None";
 }
 
 
@@ -14,4 +15,9 @@ GameObject::~GameObject()
 void GameObject::AddLogicList()
 {
 	GameObjectManager::GetInstance()->AddList(this);
+}
+
+void GameObject::AddLogicMap(std::string _name)
+{
+	GameObjectManager::GetInstance()->AddMap(_name,this);
 }

@@ -6,9 +6,11 @@ GameCamera* GameCamera::Instance = nullptr;
 
 GameCamera::GameCamera()
 {
+	ObjectName = "GameCamera";
 	CameraMode = 1;
 	CameraStatus = *(new Camera());
 	AddLogicList();
+	AddLogicMap(ObjectName);
 }
 
 
