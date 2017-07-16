@@ -11,6 +11,7 @@
 #include "Engine\GameObjectManager.h"
 #include "Engine\GameCamera.h"
 #include "Game\Player.h"
+#include "Game\Enemy_01.h"
 
 LPDIRECT3DTEXTURE9		g_pTex;
 LPD3DXMESH				g_pMesh;
@@ -57,6 +58,8 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	GameCamera::GetInstance()->CameraStatus.SetCamera(pd3dDevice);
 
 	Player* PlayerTest = new Player();
+
+	Enemy_01* EnemyTest = new Enemy_01();
 
 	//Player* PlayerTest2 = new Player();
 

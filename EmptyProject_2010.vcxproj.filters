@@ -116,6 +116,9 @@
     <ClCompile Include="Engine\GameCamera.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Enemy_01.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
@@ -148,14 +151,17 @@
     <ClInclude Include="Engine\GameObjectManager.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Player.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Camera.h">
       <Filter>Library</Filter>
     </ClInclude>
     <ClInclude Include="Engine\GameCamera.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy_01.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
