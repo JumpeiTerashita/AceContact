@@ -1,6 +1,7 @@
 #include "DXUT.h"
 #include "RenderingObject.h"
 #include "GraphicsManager.h"
+#include "..\support\t2k_support.h"
 
 RenderingObject::RenderingObject()
 {
@@ -58,3 +59,4 @@ void RenderingObject::AddRenderList()
 {
 	GraphicsManager::GetInstance()->AddList(this);
 }
+

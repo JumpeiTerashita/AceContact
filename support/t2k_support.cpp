@@ -1,9 +1,9 @@
 #include <time.h>
 #include "DXUT.h"
 #include "SDKmisc.h"
-#include "SDKsound.h"
-#include "t2k_support.h"
 #include "t2k_sound.h"
+#include "t2k_support.h"
+
 
 namespace t2k {
 

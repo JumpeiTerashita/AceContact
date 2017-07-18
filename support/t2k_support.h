@@ -7,9 +7,11 @@
 #include <vector>
 #include "DXUT.h"
 #include "SDKmisc.h"
+#include "SDKsound.h"
 
 namespace t2k {
 	class Se ;
+
 	class Support {
 	private:
 		Support() {} ;

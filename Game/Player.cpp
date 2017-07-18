@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "../Library/GraphicsManager.h"
 #include "../Library/RenderingObject.h"
+#include "../support/t2k_support.h"
+#include "Bullet.h"
 
 Player::Player()
 {
@@ -56,7 +58,11 @@ void Player::Update()
 
 void Player::Move()
 {
-	
+	if (DXUTWasKeyPressed('K')) {
+		//	LogicMap Test
+		t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
+		Bullet * bullet = new Bullet();
+	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
 		PlayerRender.Pos.x += -1.0f;
