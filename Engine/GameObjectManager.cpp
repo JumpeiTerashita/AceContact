@@ -19,12 +19,12 @@ void GameObjectManager::Update()
 	std::list< GameObject* >::iterator it = LogicList.begin();
 	while (it != LogicList.end()) {
 		(*it)->Update();
-		/*if (0 == (*it)->getLifeTime())
+		if (0 == (*it)->GetLifeTime())
 		{
 		delete (*it);
-		it = objects.erase(it);
+		it = LogicList.erase(it);
 		continue;
-		}*/
+		}
 		it++;
 	}
 	

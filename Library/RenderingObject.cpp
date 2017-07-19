@@ -9,6 +9,7 @@ RenderingObject::RenderingObject()
 	Pos = D3DXVECTOR3(0, 0, 0);
 	Rot = D3DXVECTOR3(0, 0, 0);
 	Scl = D3DXVECTOR3(1, 1, 1);
+	LifeTime = -1;
 }
 
 
@@ -19,7 +20,7 @@ RenderingObject::~RenderingObject()
 
 void RenderingObject::Render(IDirect3DDevice9* pd3dDevice)
 {
-	if (!isEnable) return;
+	if (!isEnable||GetLifeTime()==0) return;
 
 	HRESULT hr;
 

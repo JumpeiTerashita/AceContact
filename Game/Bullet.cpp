@@ -15,6 +15,8 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
+	BulletRender.Tex->Release();
+	BulletRender.Mesh->Release();
 }
 
 void Bullet::SetData()
@@ -42,13 +44,21 @@ void Bullet::SetData()
 		Graphic->AddModel("SpaceShip_One.x", &BulletRender.Mesh);
 	}
 
-	BulletRender.AddRenderList();
-	AddLogicList();
-	AddLogicMap(ObjectName);
+	//BulletRender.AddRenderList();
+	//AddLogicList();
+	//AddLogicMap(ObjectName);
 
 }
 
 void Bullet::Update()
 {
 	BulletRender.Pos.z += 1.0f;
+
+	// TODO ’eÁ‚»‚¤‚Æ‚·‚é‚ÆŽ€‚Ê
+	/*if (BulletRender.Pos.z >= 40)
+	{
+		BulletRender.SetLifeTime(0);
+		SetLifeTime(0);
+	
+	}*/
 }

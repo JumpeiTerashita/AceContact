@@ -4,6 +4,7 @@
 #include "../Library/RenderingObject.h"
 #include "../support/t2k_support.h"
 #include "Bullet.h"
+#include "BulletList.h"
 
 Player::Player()
 {
@@ -58,10 +59,14 @@ void Player::Update()
 
 void Player::Move()
 {
+	BulletList* Bullets = BulletList::GetInstance();
+
 	if (DXUTWasKeyPressed('K')) {
 		//	LogicMap Test
 		t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
 		Bullet * bullet = new Bullet();
+		Bullets->AddLogicList(bullet,POTENCY_ALLY);
+		Bullets->AddRenderList(&bullet->BulletRender, POTENCY_ALLY);
 	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {

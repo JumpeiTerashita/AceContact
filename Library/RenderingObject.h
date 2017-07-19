@@ -12,5 +12,10 @@ public:
 	bool isEnable;
 	void Render(IDirect3DDevice9* pd3dDevice);
 	void AddRenderList();
+	//	TODO LifeTime ... GameObject‚ª‚Á‚Ä‚é@‚Q‚ÂLifeTime‚ ‚ñ‚Ì‚Ç‚¤‚È‚ÌH
+	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
+	inline float GetLifeTime() { return LifeTime; }
+private:
+	float LifeTime;
 };
 

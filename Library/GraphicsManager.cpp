@@ -19,12 +19,12 @@ void GraphicsManager::Render()
 	std::list< RenderingObject* >::iterator it = RenderingList.begin();
 	while (it != RenderingList.end()) {
 		(*it)->Render(Pd3dDevice);
-		/*if (0 == (*it)->getLifeTime())
+		if (0 == (*it)->GetLifeTime())
 		{
 			delete (*it);
-			it = objects.erase(it);
+			it = RenderingList.erase(it);
 			continue;
-		}*/
+		}
 		it++;
 	}
 }

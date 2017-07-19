@@ -9,7 +9,7 @@ Enemy_01::Enemy_01()
 	EnemyOneRender.Pos = D3DXVECTOR3(0, 0, 30);
 	EnemyOneRender.Rot = D3DXVECTOR3(0, 3.14, 0);
 	EnemyOneRender.Scl = D3DXVECTOR3(0.5, 0.5, 0.5);
-
+	
 	SetData();
 }
 

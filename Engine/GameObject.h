@@ -10,5 +10,9 @@ public:
 	virtual void Update() = 0;
 	void AddLogicList();
 	void AddLogicMap(std::string _name);
+	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
+	inline float GetLifeTime() { return LifeTime; }
+private:
+	float LifeTime;
 };
 

@@ -5,6 +5,7 @@
 GameObject::GameObject()
 {
 	ObjectName = "None";
+	LifeTime = -1;
 }
 
 
@@ -21,3 +22,4 @@ void GameObject::AddLogicMap(std::string _name)
 {
 	GameObjectManager::GetInstance()->AddMap(_name,this);
 }
+
