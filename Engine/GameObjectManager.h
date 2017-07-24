@@ -2,8 +2,7 @@
 #include "..\Library\Singleton.h"
 #include <list>
 #include <map>
-
-class GameObject;
+#include "..\Engine\GameObject.h"
 
 class GameObjectManager : public Singleton<GameObjectManager>
 {
@@ -11,12 +10,14 @@ public:
 	GameObjectManager();
 	~GameObjectManager();
 	void Update();
-	std::list<GameObject*> LogicList;
-	inline void AddList(GameObject* _pObject) { LogicList.push_back(_pObject); }
-	inline void AddMap(std::string _name, GameObject* _pObject) { LogicMap.insert(std::make_pair(_name, _pObject)); };
-	inline GameObject* GetMap(std::string _name) { return LogicMap[_name]; }
+	std::list<SpGameObject> LogicList;
+	inline void AddList(SpGameObject _SpObject) { 
+		LogicList.push_back(_SpObject); 
+	}
+	inline void AddMap(std::string _name, SpGameObject _SpObject) { LogicMap.insert(std::make_pair(_name, _SpObject)); };
+	inline SpGameObject GetMap(std::string _name) { return LogicMap[_name]; }
 	bool IsInLogicMap(std::string _name);
 private:
-	std::map<std::string, GameObject*> LogicMap;
+	std::map<std::string, SpGameObject> LogicMap;
 };
 

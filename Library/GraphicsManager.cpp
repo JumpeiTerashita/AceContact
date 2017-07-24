@@ -1,8 +1,9 @@
 #include "DXUT.h"
 #include "GraphicsManager.h"
 #include "RenderingObject.h"
+#include <memory>
 
-GraphicsManager* GraphicsManager::Instance = nullptr;
+std::shared_ptr<GraphicsManager> GraphicsManager::Instance = nullptr;
 
 GraphicsManager::GraphicsManager()
 {
@@ -16,12 +17,12 @@ GraphicsManager::~GraphicsManager()
 
 void GraphicsManager::Render()
 {
-	std::list< RenderingObject* >::iterator it = RenderingList.begin();
+	std::list< SpRenderingObject >::iterator it = RenderingList.begin();
 	while (it != RenderingList.end()) {
 		(*it)->Render(Pd3dDevice);
 		if (0 == (*it)->GetLifeTime())
 		{
-			delete (*it);
+			//delete (*it);
 			it = RenderingList.erase(it);
 			continue;
 		}

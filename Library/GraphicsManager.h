@@ -2,15 +2,14 @@
 #include "Singleton.h"
 #include <list>
 #include <map>
-
-class RenderingObject;
+#include "RenderingObject.h"
 
 class GraphicsManager : public Singleton<GraphicsManager>
 {
 public:
 	GraphicsManager();
 	~GraphicsManager();
-	inline void AddList(RenderingObject* _pObject) { RenderingList.push_back(_pObject); }
+	inline void AddList(SpRenderingObject _SpObject) { RenderingList.push_back(_SpObject); }
 	inline void SetDevice(IDirect3DDevice9* pd3dDevice) { Pd3dDevice = pd3dDevice; }
 	inline IDirect3DDevice9* GetDevice() { return Pd3dDevice; }
 
@@ -34,8 +33,9 @@ public:
 	bool IsInRenderingTexMap(std::string _name);
 	bool IsInRenderingModelMap(std::string _name);
 	void Render();
+	std::list<SpRenderingObject> RenderingList;
 private:
-	std::list<RenderingObject*> RenderingList;
+	
 	std::map<std::string, LPDIRECT3DTEXTURE9*> RenderingTexMap;
 	std::map<std::string, LPD3DXMESH*> RenderingModelMap;
 	IDirect3DDevice9* Pd3dDevice;

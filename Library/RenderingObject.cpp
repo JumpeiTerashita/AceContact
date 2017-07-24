@@ -10,12 +10,21 @@ RenderingObject::RenderingObject()
 	Rot = D3DXVECTOR3(0, 0, 0);
 	Scl = D3DXVECTOR3(1, 1, 1);
 	LifeTime = -1;
+	Tex = nullptr;
+	Mesh = nullptr;
 }
 
 
 RenderingObject::~RenderingObject()
 {
+	t2k::Support::debugTrace("Rendering Destruct");
+}
 
+SpRenderingObject RenderingObject::Create()
+{
+	SpRenderingObject SpP = SpRenderingObject(new RenderingObject);
+	SpP->Wp_this = SpP;
+	return SpP;
 }
 
 void RenderingObject::Render(IDirect3DDevice9* pd3dDevice)
@@ -51,13 +60,18 @@ void RenderingObject::Render(IDirect3DDevice9* pd3dDevice)
 	   // Render the scene
 	   if( SUCCEEDED( pd3dDevice->BeginScene() ) )
 	   {
-		Mesh->DrawSubset( 0 ) ;
+			Mesh->DrawSubset( 0 ) ;
 	       V( pd3dDevice->EndScene() );
 	   }
 }
 
 void RenderingObject::AddRenderList()
 {
-	GraphicsManager::GetInstance()->AddList(this);
+	SpRenderingObject SpR = Wp_this.lock();
+	if (SpR)
+	{
+		GraphicsManager::GetInstance()->AddList(SpR);
+	}
+	
 }
 

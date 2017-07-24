@@ -4,52 +4,64 @@
 #include "../Library/RenderingObject.h"
 #include "../support/t2k_support.h"
 #include "Bullet.h"
-#include "BulletList.h"
 
 Player::Player()
 {
+	RenderObj = RenderingObject::Create();
 	ObjectName = "Player";
-	PlayerRender.Pos = D3DXVECTOR3(0, 0, 0);
-	PlayerRender.Rot = D3DXVECTOR3(0, 0, 0);
-	PlayerRender.Scl = D3DXVECTOR3(1, 1, 1);
+	RenderObj->Pos = D3DXVECTOR3(0, 0, 0);
+	RenderObj->Rot = D3DXVECTOR3(0, 0, 0);
+	RenderObj->Scl = D3DXVECTOR3(1, 1, 1);
 	
-	SetData();
 }
 
 
 Player::~Player()
 {
-	PlayerRender.Tex->Release();
-	PlayerRender.Mesh->Release();
+	
+	RenderObj->Tex->Release();
+	RenderObj->Mesh->Release();
 }
 
 void Player::SetData()
 {
-	GraphicsManager* Graphic = GraphicsManager::GetInstance();
+	auto Graphic = GraphicsManager::GetInstance();
 
 	if (Graphic->IsInRenderingTexMap("SpaceShip_One.bmp"))
 	{
-		PlayerRender.Tex = *(Graphic->GetTexture("SpaceShip_One.bmp"));
+		RenderObj->Tex = *(Graphic->GetTexture("SpaceShip_One.bmp"));
 	}
 	else 
 	{
-		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"SpaceShip_One.bmp", &PlayerRender.Tex);
-		Graphic->AddTexture("SpaceShip_One.bmp",&PlayerRender.Tex);
+		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"SpaceShip_One.bmp", &RenderObj->Tex);
+		Graphic->AddTexture("SpaceShip_One.bmp",&RenderObj->Tex);
 	}
 
 	if (Graphic->IsInRenderingModelMap("SpaceShip_One.x"))
 	{
-		PlayerRender.Mesh = *(Graphic->GetModel("SpaceShip_One.x"));
+		RenderObj->Mesh = *(Graphic->GetModel("SpaceShip_One.x"));
 	}
 	else
 	{
-		D3DXLoadMeshFromX(L"SpaceShip_One.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &PlayerRender.Mesh);
-		Graphic->AddModel("SpaceShip_One.x", &PlayerRender.Mesh);
+		D3DXLoadMeshFromX(L"SpaceShip_One.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &RenderObj->Mesh);
+		Graphic->AddModel("SpaceShip_One.x", &RenderObj->Mesh);
 	}
 
-	PlayerRender.AddRenderList();
+	/*RenderObj.AddRenderList();
 	AddLogicList();
-	AddLogicMap(ObjectName);
+	AddLogicMap(ObjectName);*/
+}
+
+SpPlayer Player::Create()
+{
+	SpPlayer SpP = SpPlayer(new Player);
+	SpP->Wp_this = SpP;
+	SpP->SetData();
+	SpP->AddLogicList();
+	SpP->AddLogicMap("Player");
+	SpP->RenderObj->AddRenderList();
+	
+	return SpP;
 }
 
 void Player::Update()
@@ -59,31 +71,31 @@ void Player::Update()
 
 void Player::Move()
 {
-	BulletList* Bullets = BulletList::GetInstance();
+
 
 	if (DXUTWasKeyPressed('K')) {
 		//	LogicMap Test
-		t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
-		Bullet * bullet = new Bullet();
-		Bullets->AddLogicList(bullet,POTENCY_ALLY);
-		Bullets->AddRenderList(&bullet->BulletRender, POTENCY_ALLY);
+		//t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
+		//SpBullet bullet =  Bullet::Create();
+		//Bullets->AddLogicList(bullet,POTENCY_ALLY);
+		//Bullets->AddRenderList(&bullet->RenderObj, POTENCY_ALLY);
 	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
-		PlayerRender.Pos.x += -1.0f;
-		PlayerRender.Rot.z += D3DXToRadian(10.0f);
+		RenderObj->Pos.x += -1.0f;
+		RenderObj->Rot.z += D3DXToRadian(10.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_RIGHT)) {
-		PlayerRender.Pos.x += 1.0f;
-		PlayerRender.Rot.z += D3DXToRadian(-10.0f);
+		RenderObj->Pos.x += 1.0f;
+		RenderObj->Rot.z += D3DXToRadian(-10.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_UP)) {
-		PlayerRender.Pos.z += 1.0f;
+		RenderObj->Pos.z += 1.0f;
 	}
 
 	if (DXUTIsKeyDown(VK_DOWN)) {
-		PlayerRender.Pos.z += -1.0f;
+		RenderObj->Pos.z += -1.0f;
 	}
 }

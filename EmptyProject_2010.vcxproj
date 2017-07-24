@@ -390,7 +390,6 @@
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\GameObjectManager.cpp" />
     <ClCompile Include="Game\Bullet.cpp" />
-    <ClCompile Include="Game\BulletList.cpp" />
     <ClCompile Include="Game\Enemy_01.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Library\Camera.cpp" />
@@ -403,7 +402,6 @@
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\GameObjectManager.h" />
     <ClInclude Include="Game\Bullet.h" />
-    <ClInclude Include="Game\BulletList.h" />
     <ClInclude Include="Game\Enemy_01.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Library\Camera.h" />

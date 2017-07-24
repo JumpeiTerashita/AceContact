@@ -2,20 +2,25 @@
 #include "GameCamera.h"
 
 
-GameCamera* GameCamera::Instance = nullptr;
+std::shared_ptr<GameCamera> GameCamera::Instance = nullptr;
 
 GameCamera::GameCamera()
 {
 	ObjectName = "GameCamera";
 	CameraMode = 1;
 	CameraStatus = *(new Camera());
-	AddLogicList();
-	AddLogicMap(ObjectName);
+
 }
 
 
 GameCamera::~GameCamera()
 {
+}
+
+void GameCamera::Create()
+{
+	AddLogicList();
+	AddLogicMap(ObjectName);
 }
 
 void GameCamera::Update()

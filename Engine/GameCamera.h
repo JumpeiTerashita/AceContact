@@ -10,6 +10,7 @@ public:
 	Camera CameraStatus;
 	GameCamera();
 	~GameCamera();
+	void Create();
 	void Update();
 	void Move();
 };

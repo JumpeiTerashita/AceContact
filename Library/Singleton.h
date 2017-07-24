@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+
 
 template<class T>
 class Singleton
@@ -6,15 +8,15 @@ class Singleton
 public:
 	Singleton() {};
 	virtual ~Singleton() {};
-	inline static T* GetInstance()
+	inline static std::shared_ptr<T> GetInstance()
 	{
 		if (nullptr == Instance)
 		{
-			Instance = new T {};
+			Instance = std::shared_ptr<T>(new T);
 		}
 		return Instance;
 	}
 private:
-	static T* Instance;
+	static std::shared_ptr<T> Instance;
 };
 

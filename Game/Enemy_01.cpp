@@ -6,47 +6,57 @@
 Enemy_01::Enemy_01()
 {
 	ObjectName = "EnemyOneRender";
-	EnemyOneRender.Pos = D3DXVECTOR3(0, 0, 30);
-	EnemyOneRender.Rot = D3DXVECTOR3(0, 3.14, 0);
-	EnemyOneRender.Scl = D3DXVECTOR3(0.5, 0.5, 0.5);
 	
-	SetData();
+	RenderObj = RenderingObject::Create();
+	RenderObj->Pos = D3DXVECTOR3(0, 0, 30);
+	RenderObj->Rot = D3DXVECTOR3(0, 3.14, 0);
+	RenderObj->Scl = D3DXVECTOR3(0.5, 0.5, 0.5);
+	
 }
 
 
 Enemy_01::~Enemy_01()
 {
-	EnemyOneRender.Tex->Release();
-	EnemyOneRender.Mesh->Release();
+	RenderObj->Tex->Release();
+	RenderObj->Mesh->Release();
 }
 
 void Enemy_01::SetData()
 {
-	GraphicsManager* Graphic = GraphicsManager::GetInstance();
+	auto Graphic = GraphicsManager::GetInstance();
 
 	if (Graphic->IsInRenderingTexMap("Fighter.bmp"))
 	{
-		EnemyOneRender.Tex = *(Graphic->GetTexture("Fighter.bmp"));
+		RenderObj->Tex = *(Graphic->GetTexture("Fighter.bmp"));
 	}
 	else
 	{
-		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"Fighter.bmp", &EnemyOneRender.Tex);
-		Graphic->AddTexture("Fighter.bmp", &EnemyOneRender.Tex);
+		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"Fighter.bmp", &RenderObj->Tex);
+		Graphic->AddTexture("Fighter.bmp", &RenderObj->Tex);
 	}
 
 	if (Graphic->IsInRenderingModelMap("Fighter.x"))
 	{
-		EnemyOneRender.Mesh = *(Graphic->GetModel("Fighter.x"));
+		RenderObj->Mesh = *(Graphic->GetModel("Fighter.x"));
 	}
 	else
 	{
-		D3DXLoadMeshFromX(L"Fighter.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &EnemyOneRender.Mesh);
-		Graphic->AddModel("Fighter.x", &EnemyOneRender.Mesh);
+		D3DXLoadMeshFromX(L"Fighter.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &RenderObj->Mesh);
+		Graphic->AddModel("Fighter.x", &RenderObj->Mesh);
 	}
 
-	EnemyOneRender.AddRenderList();
-	AddLogicList();
-	AddLogicMap(ObjectName);
+	
+}
+
+SpEnemy_01 Enemy_01::Create()
+{
+	SpEnemy_01 SpE = SpEnemy_01(new Enemy_01);
+	SpE->Wp_this = SpE;
+	SpE->SetData();
+	SpE->RenderObj->AddRenderList();
+	SpE->AddLogicList();
+	SpE->AddLogicMap(SpE->ObjectName);
+	return SpE;
 }
 
 void Enemy_01::Update()
@@ -60,12 +70,12 @@ void Enemy_01::Move()
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
 	
-		EnemyOneRender.Rot.z += D3DXToRadian(10.0f);
+		RenderObj->Rot.z += D3DXToRadian(10.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_RIGHT)) {
 		
-		EnemyOneRender.Rot.z += D3DXToRadian(-10.0f);
+		RenderObj->Rot.z += D3DXToRadian(-10.0f);
 	}
 
 	

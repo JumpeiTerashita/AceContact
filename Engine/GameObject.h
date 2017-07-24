@@ -1,9 +1,15 @@
 #pragma once
 #include <string>
+#include <memory>
+
+class GameObject;
+typedef std::shared_ptr<GameObject> SpGameObject;
+typedef std::weak_ptr<GameObject> WpGameObject;
 
 class GameObject
 {
 public:
+	WpGameObject Wp_this;
 	std::string ObjectName;
 	GameObject();
 	virtual ~GameObject();

@@ -1,14 +1,20 @@
 #pragma once
 #include "..\Engine\GameObject.h"
 #include "..\Library\RenderingObject.h"
+#include <memory>
+
+class Enemy_01;
+typedef std::shared_ptr<Enemy_01> SpEnemy_01;
 class Enemy_01 : public GameObject
 {
 public:
-	Enemy_01();
-	~Enemy_01();
-	RenderingObject EnemyOneRender;
+	SpRenderingObject RenderObj;
 	void Update();
+	static SpEnemy_01 Create();
+	~Enemy_01();
 private:
+	Enemy_01();
+	
 	void Move();
 	void SetData();
 };

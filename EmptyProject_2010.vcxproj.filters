@@ -122,9 +122,6 @@
     <ClCompile Include="Game\Bullet.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\BulletList.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
@@ -170,9 +167,6 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Bullet.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\BulletList.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
