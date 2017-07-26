@@ -12,13 +12,11 @@ Player::Player()
 	RenderObj->Pos = D3DXVECTOR3(0, 0, 0);
 	RenderObj->Rot = D3DXVECTOR3(0, 0, 0);
 	RenderObj->Scl = D3DXVECTOR3(1, 1, 1);
-	
 }
 
 
 Player::~Player()
-{
-	
+{	
 	RenderObj->Tex->Release();
 	RenderObj->Mesh->Release();
 }
@@ -46,7 +44,6 @@ void Player::SetData()
 		D3DXLoadMeshFromX(L"SpaceShip_One.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &RenderObj->Mesh);
 		Graphic->AddModel("SpaceShip_One.x", &RenderObj->Mesh);
 	}
-
 	/*RenderObj.AddRenderList();
 	AddLogicList();
 	AddLogicMap(ObjectName);*/
@@ -71,14 +68,10 @@ void Player::Update()
 
 void Player::Move()
 {
-
-
 	if (DXUTWasKeyPressed('K')) {
 		//	LogicMap Test
-		//t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
-		//SpBullet bullet =  Bullet::Create();
-		//Bullets->AddLogicList(bullet,POTENCY_ALLY);
-		//Bullets->AddRenderList(&bullet->RenderObj, POTENCY_ALLY);
+		t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
+		SpBullet bullet =  Bullet::Create();
 	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {

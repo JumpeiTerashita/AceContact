@@ -17,8 +17,8 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
-	RenderObj->Tex->Release();
-	RenderObj->Mesh->Release();
+	/*RenderObj->Tex->Release();
+	RenderObj->Mesh->Release();*/
 }
 
 void Bullet::SetData()
@@ -47,16 +47,16 @@ void Bullet::SetData()
 	}
 
 
-	AddLogicList();
-	AddLogicMap(ObjectName);
-
+	
 }
 
 SpBullet Bullet::Create()
 {
 	SpBullet SpB = SpBullet(new Bullet);
 	SpB->Wp_this = SpB;
-
+	//SpB->SetData();
+	SpB->AddLogicList();
+	SpB->AddLogicMap(SpB->ObjectName);
 
 	SpB->RenderObj->AddRenderList();
 
