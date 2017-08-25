@@ -14,7 +14,7 @@ GameObject::GameObject()
 GameObject::~GameObject()
 {
 	t2k::Support::debugTrace("GameObject Destruct :%s", ObjectName);
-
+	GameObjectManager::GetInstance()->DelMap(ObjectName);
 }
 
 void GameObject::AddLogicList()
@@ -34,5 +34,21 @@ void GameObject::AddLogicMap(std::string _name)
 	{
 		GameObjectManager::GetInstance()->AddMap(_name, SpG);
 	}
+}
+
+SpGameObject GameObject::GetLogicMap(std::string _name)
+{
+	auto GameObjMng = GameObjectManager::GetInstance();
+	if (GameObjMng->IsInLogicMap(_name))
+	{
+		return GameObjMng->GetMap(_name);
+	}
+
+	return nullptr;
+}
+
+void GameObject::SetRenderObj(SpRenderingObject _RenderObjP)
+{
+	RenderObjP = _RenderObjP;
 }
 

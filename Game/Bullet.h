@@ -13,5 +13,6 @@ public:
 	SpRenderingObject RenderObj;
 	void Update();
 	void SetData();
+	void CollisionJudge();
 };
 

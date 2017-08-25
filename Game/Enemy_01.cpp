@@ -5,7 +5,7 @@
 
 Enemy_01::Enemy_01()
 {
-	ObjectName = "EnemyOneRender";
+	ObjectName = "EnemyOne";
 	
 	RenderObj = RenderingObject::Create();
 	RenderObj->Pos = D3DXVECTOR3(0, 0, 30);
@@ -17,6 +17,8 @@ Enemy_01::Enemy_01()
 
 Enemy_01::~Enemy_01()
 {
+
+
 	RenderObj->Tex->Release();
 	RenderObj->Mesh->Release();
 }
@@ -54,6 +56,7 @@ SpEnemy_01 Enemy_01::Create()
 	SpE->Wp_this = SpE;
 	SpE->SetData();
 	SpE->RenderObj->AddRenderList();
+	SpE->SetRenderObj(SpE->RenderObj);
 	SpE->AddLogicList();
 	SpE->AddLogicMap(SpE->ObjectName);
 	return SpE;

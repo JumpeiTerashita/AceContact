@@ -15,6 +15,7 @@ public:
 		LogicList.push_back(_SpObject); 
 	}
 	inline void AddMap(std::string _name, SpGameObject _SpObject) { LogicMap.insert(std::make_pair(_name, _SpObject)); };
+	inline void DelMap(std::string _name) { LogicMap.erase(_name); };
 	inline SpGameObject GetMap(std::string _name) { return LogicMap[_name]; }
 	bool IsInLogicMap(std::string _name);
 private:

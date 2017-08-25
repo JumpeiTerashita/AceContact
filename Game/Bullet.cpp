@@ -1,5 +1,6 @@
 #include "DXUT.h"
 #include "Bullet.h"
+#include "..\Engine\GameObjectManager.h"
 #include "..\Library\GraphicsManager.h"
 
 Bullet::Bullet()
@@ -56,8 +57,9 @@ SpBullet Bullet::Create()
 	SpB->Wp_this = SpB;
 	//SpB->SetData();
 	SpB->AddLogicList();
+	SpB->SetRenderObj(SpB->RenderObj);
 	SpB->AddLogicMap(SpB->ObjectName);
-
+	
 	SpB->RenderObj->AddRenderList();
 
 	return SpB;
@@ -69,11 +71,42 @@ void Bullet::Update()
 {
 	RenderObj->Pos.z += 1.0f;
 
+	CollisionJudge();
+
 	// TODO ’eÁ‚»‚¤‚Æ‚·‚é‚ÆŽ€‚Ê
 	if (RenderObj->Pos.z >= 40)
 	{
 		RenderObj->SetLifeTime(0);
 		SetLifeTime(0);
-	
 	}
+}
+
+void Bullet::CollisionJudge()
+{
+	auto EnemyRenObj = GameObjectManager::GetInstance()->GetMap("EnemyOne")->RenderObjP;
+	if (EnemyRenObj==nullptr) return;
+
+
+	auto BulletPos = RenderObj->Pos;
+	auto EnemyPos = EnemyRenObj->Pos;
+	auto Dist = BulletPos - EnemyPos;
+
+	float DistX2 = Dist.x*Dist.x;
+	float DistY2 = Dist.y*Dist.y;
+	float DistZ2 = Dist.z*Dist.z;
+	float DistR = 1 + 1;
+	float DistR2 = DistR*DistR;
+
+	if (DistX2 + DistY2 + DistZ2 <= DistR2)
+	{
+		// Hit
+		GameObjectManager::GetInstance()->GetMap("EnemyOne")->SetLifeTime(0);
+		EnemyRenObj->SetLifeTime(0);
+
+		SetLifeTime(0);
+		RenderObj->SetLifeTime(0);
+		
+	}
+	
+
 }

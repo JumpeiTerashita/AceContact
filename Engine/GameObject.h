@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <memory>
+#include "../Library/RenderingObject.h"
 
 class GameObject;
 typedef std::shared_ptr<GameObject> SpGameObject;
@@ -16,6 +17,9 @@ public:
 	virtual void Update() = 0;
 	void AddLogicList();
 	void AddLogicMap(std::string _name);
+	void SetRenderObj(SpRenderingObject _RenderObjP);
+	SpGameObject GetLogicMap(std::string _name);
+	SpRenderingObject RenderObjP;
 	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
 	inline float GetLifeTime() { return LifeTime; }
 private:

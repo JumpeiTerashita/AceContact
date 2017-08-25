@@ -55,7 +55,9 @@ SpPlayer Player::Create()
 	SpP->Wp_this = SpP;
 	SpP->SetData();
 	SpP->AddLogicList();
+	SpP->SetRenderObj(SpP->RenderObj);
 	SpP->AddLogicMap("Player");
+	
 	SpP->RenderObj->AddRenderList();
 	
 	return SpP;
@@ -72,6 +74,7 @@ void Player::Move()
 		//	LogicMap Test
 		t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
 		SpBullet bullet =  Bullet::Create();
+		bullet->RenderObj->Pos = RenderObj->Pos;
 	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
