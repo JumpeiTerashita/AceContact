@@ -394,6 +394,7 @@
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Library\Camera.cpp" />
     <ClCompile Include="Library\GraphicsManager.cpp" />
+    <ClCompile Include="Library\Mesh.cpp" />
     <ClCompile Include="Library\RenderingObject.cpp" />
     <ClCompile Include="support\t2k_support.cpp" />
     <ClInclude Include="DXUT\Optional\SDKsound.h" />
@@ -406,6 +407,7 @@
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Library\Camera.h" />
     <ClInclude Include="Library\GraphicsManager.h" />
+    <ClInclude Include="Library\Mesh.h" />
     <ClInclude Include="Library\RenderingObject.h" />
     <ClInclude Include="Library\Sequence.h" />
     <ClInclude Include="Library\Singleton.h" />

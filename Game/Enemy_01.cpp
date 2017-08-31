@@ -19,8 +19,7 @@ Enemy_01::~Enemy_01()
 {
 
 
-	RenderObj->Tex->Release();
-	RenderObj->Mesh->Release();
+	
 }
 
 void Enemy_01::SetData()

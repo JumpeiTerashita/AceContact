@@ -21,39 +21,13 @@ Player::~Player()
 	RenderObj->Mesh->Release();
 }
 
-void Player::SetData()
-{
-	auto Graphic = GraphicsManager::GetInstance();
 
-	if (Graphic->IsInRenderingTexMap("SpaceShip_One.bmp"))
-	{
-		RenderObj->Tex = *(Graphic->GetTexture("SpaceShip_One.bmp"));
-	}
-	else 
-	{
-		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), L"SpaceShip_One.bmp", &RenderObj->Tex);
-		Graphic->AddTexture("SpaceShip_One.bmp",&RenderObj->Tex);
-	}
-
-	if (Graphic->IsInRenderingModelMap("SpaceShip_One.x"))
-	{
-		RenderObj->Mesh = *(Graphic->GetModel("SpaceShip_One.x"));
-	}
-	else
-	{
-		D3DXLoadMeshFromX(L"SpaceShip_One.x", D3DXMESH_MANAGED, GraphicsManager::GetInstance()->GetDevice(), NULL, NULL, NULL, NULL, &RenderObj->Mesh);
-		Graphic->AddModel("SpaceShip_One.x", &RenderObj->Mesh);
-	}
-	/*RenderObj.AddRenderList();
-	AddLogicList();
-	AddLogicMap(ObjectName);*/
-}
 
 SpPlayer Player::Create()
 {
 	SpPlayer SpP = SpPlayer(new Player);
 	SpP->Wp_this = SpP;
-	SpP->SetData();
+	SpP->RenderObj->SetData("SpaceShip_One");
 	SpP->AddLogicList();
 	SpP->SetRenderObj(SpP->RenderObj);
 	SpP->AddLogicMap("Player");

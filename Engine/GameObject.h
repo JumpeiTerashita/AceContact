@@ -22,6 +22,7 @@ public:
 	SpRenderingObject RenderObjP;
 	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
 	inline float GetLifeTime() { return LifeTime; }
+	void DelObj();
 private:
 	float LifeTime;
 };

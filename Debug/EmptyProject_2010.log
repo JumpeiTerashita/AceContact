@@ -1,4 +1,104 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (EmptyProject.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+  DXUT.cpp
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50092): note: 'DXGI_STATUS_OCCLUDED' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50101): note: 'DXGI_STATUS_CLIPPED' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50110): note: 'DXGI_STATUS_NO_REDIRECTION' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50119): note: 'DXGI_STATUS_NO_DESKTOP_ACCESS' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50128): note: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50137): note: 'DXGI_STATUS_MODE_CHANGED' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50146): note: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50161): note: 'DXGI_ERROR_INVALID_CALL' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50170): note: 'DXGI_ERROR_NOT_FOUND' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50179): note: 'DXGI_ERROR_MORE_DATA' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50188): note: 'DXGI_ERROR_UNSUPPORTED' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50197): note: 'DXGI_ERROR_DEVICE_REMOVED' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50206): note: 'DXGI_ERROR_DEVICE_HUNG' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50216): note: 'DXGI_ERROR_DEVICE_RESET' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50225): note: 'DXGI_ERROR_WAS_STILL_DRAWING' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50235): note: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50244): note: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50254): note: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50263): note: 'DXGI_ERROR_NONEXCLUSIVE' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50272): note: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50282): note: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50291): note: 'DXGI_ERROR_REMOTE_OUTOFMEMORY' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50445): note: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS' の以前の定義を確認してください
+c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': マクロが再定義されました。
+  c:\program files (x86)\windows kits\8.1\include\shared\winerror.h(50454): note: 'D3D10_ERROR_FILE_NOT_FOUND' の以前の定義を確認してください
+c:\users\vantan\documents\atelier\children\acecontact\dxut\core\dxut.cpp(696): warning C4838: 'UINT' から 'LONG' への変換には縮小変換が必要です
+c:\users\vantan\documents\atelier\children\acecontact\dxut\core\dxut.cpp(697): warning C4838: 'UINT' から 'LONG' への変換には縮小変換が必要です
+c:\users\vantan\documents\atelier\children\acecontact\dxut\core\dxut.cpp(4961): warning C4996: 'GetVersionExW': が古い形式として宣言されました。
+  c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(442): note: 'GetVersionExW' の宣言を確認してください
+  SDKsound.cpp
+  SDKwavefile.cpp
+  GameCamera.cpp
+c:\users\vantan\documents\atelier\children\acecontact\engine\gamecamera.cpp(5): warning C4356: 'Singleton<GameCamera>::Instance': 静的データ メンバーは派生クラスを使って初期化できません。
+  GameObject.cpp
+c:\users\vantan\documents\atelier\children\acecontact\engine\gameobject.cpp(16): warning C4840: 可変個引数関数の引数としての、クラス 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' の移植性のない使用法
+  c:\users\vantan\documents\atelier\children\acecontact\engine\gameobject.cpp(16): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' は非単純です
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xstring(1923): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' の宣言を確認してください
+  c:\users\vantan\documents\atelier\children\acecontact\engine\gameobject.cpp(16): note: コンストラクターとデストラクターは呼び出されません。クラスのビットごとのコピーが引数として渡されます
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xstring(3997): note: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' の宣言を確認してください
+  GameObjectManager.cpp
+c:\users\vantan\documents\atelier\children\acecontact\engine\gameobjectmanager.cpp(6): warning C4356: 'Singleton<GameObjectManager>::Instance': 静的データ メンバーは派生クラスを使って初期化できません。
   Bullet.cpp
+  Enemy_01.cpp
+  Player.cpp
+  Camera.cpp
+  GraphicsManager.cpp
+c:\users\vantan\documents\atelier\children\acecontact\library\graphicsmanager.cpp(6): warning C4356: 'Singleton<GraphicsManager>::Instance': 静的データ メンバーは派生クラスを使って初期化できません。
+  Mesh.cpp
+  RenderingObject.cpp
+  t2k_support.cpp
+c:\users\vantan\documents\atelier\children\acecontact\support\t2k_support.cpp(131): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1465): note: 'vsprintf' の宣言を確認してください
+c:\users\vantan\documents\atelier\children\acecontact\support\t2k_support.cpp(149): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1465): note: 'vsprintf' の宣言を確認してください
+  DXUTenum.cpp
+c:\users\vantan\documents\atelier\children\acecontact\dxut\core\dxutenum.cpp(3976): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+  DXUTmisc.cpp
+c:\users\vantan\documents\atelier\children\acecontact\dxut\core\dxutmisc.cpp(1263): warning C4996: 'GetVersionExA': が古い形式として宣言されました。
+  c:\program files (x86)\windows kits\8.1\include\um\sysinfoapi.h(433): note: 'GetVersionExA' の宣言を確認してください
+  DXUTcamera.cpp
+  DXUTgui.cpp
+c:\users\vantan\documents\atelier\children\acecontact\dxut\optional\dxutgui.cpp(6846): warning C4458: 'iTexture' を宣言すると、クラス メンバーが隠蔽されます
+  c:\users\vantan\documents\atelier\children\acecontact\dxut\optional\dxutgui.h(109): note: 'CDXUTElement::iTexture' の宣言を確認してください
+c:\users\vantan\documents\atelier\children\acecontact\dxut\optional\dxutgui.cpp(6860): warning C4458: 'iFont' を宣言すると、クラス メンバーが隠蔽されます
+  c:\users\vantan\documents\atelier\children\acecontact\dxut\optional\dxutgui.h(110): note: 'CDXUTElement::iFont' の宣言を確認してください
+c:\users\vantan\documents\atelier\children\acecontact\dxut\optional\dxutgui.cpp(6860): warning C4458: 'dwTextFormat' を宣言すると、クラス メンバーが隠蔽されます
+  c:\users\vantan\documents\atelier\children\acecontact\dxut\optional\dxutgui.h(111): note: 'CDXUTElement::dwTextFormat' の宣言を確認してください
+  DXUTres.cpp
+  DXUTsettingsdlg.cpp
+  SDKmesh.cpp
+  コードを生成中...
+  コンパイル中...
+  SDKmisc.cpp
+  ProjectCore.cpp
+  コードを生成中...
+SDKsound.obj : warning LNK4075: /EDITANDCONTINUE は /SAFESEH の指定によって無視されます。
+LINK : warning LNK4199: /DELAYLOAD:d3dx10d.lib は無視されます。d3dx10d.lib にインポートがありません。
   EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.exe
   EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.pdb (Full PDB)

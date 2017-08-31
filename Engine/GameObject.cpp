@@ -13,8 +13,21 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	t2k::Support::debugTrace("GameObject Destruct :%s", ObjectName);
+	t2k::Support::debugTrace("GameObject Destruct : %s", ObjectName);
+	
+}
+
+void GameObject::DelObj()
+{
+	SetLifeTime(0);
 	GameObjectManager::GetInstance()->DelMap(ObjectName);
+	
+
+	if (RenderObjP != nullptr)
+	{
+		RenderObjP->SetLifeTime(0);
+		RenderObjP.reset();
+	}
 }
 
 void GameObject::AddLogicList()

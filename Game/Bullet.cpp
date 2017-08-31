@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "..\Engine\GameObjectManager.h"
 #include "..\Library\GraphicsManager.h"
+#include "..\support\t2k_support.h"
 
 Bullet::Bullet()
 {
@@ -18,13 +19,14 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
-	/*RenderObj->Tex->Release();
-	RenderObj->Mesh->Release();*/
+	//RenderObj->Tex->Release();
+	//RenderObj->Mesh->Release();
 }
 
 void Bullet::SetData()
 {
-
+	wchar_t buf[64];
+	t2k::Support::toWideChar(buf, "SpaceShip_One.bmp",sizeof(buf));
 	auto Graphic = GraphicsManager::GetInstance();
 
 	if (Graphic->IsInRenderingTexMap("SpaceShip_One.bmp"))
@@ -83,8 +85,11 @@ void Bullet::Update()
 
 void Bullet::CollisionJudge()
 {
-	auto EnemyRenObj = GameObjectManager::GetInstance()->GetMap("EnemyOne")->RenderObjP;
-	if (EnemyRenObj==nullptr) return;
+	if (!GameObjectManager::GetInstance()->IsInLogicMap("EnemyOne")) return;
+	
+	
+	SpRenderingObject EnemyRenObj = GameObjectManager::GetInstance()->GetMap("EnemyOne")->RenderObjP;
+
 
 
 	auto BulletPos = RenderObj->Pos;
@@ -100,11 +105,9 @@ void Bullet::CollisionJudge()
 	if (DistX2 + DistY2 + DistZ2 <= DistR2)
 	{
 		// Hit
-		GameObjectManager::GetInstance()->GetMap("EnemyOne")->SetLifeTime(0);
-		EnemyRenObj->SetLifeTime(0);
+		GameObjectManager::GetInstance()->GetMap("EnemyOne")->DelObj();
 
-		SetLifeTime(0);
-		RenderObj->SetLifeTime(0);
+		DelObj();
 		
 	}
 	

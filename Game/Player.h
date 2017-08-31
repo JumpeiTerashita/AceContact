@@ -15,7 +15,7 @@ public:
 private:
 	Player();
 	void Move();
-	void SetData();
+
 };
 
 

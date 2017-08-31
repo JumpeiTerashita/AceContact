@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string>
 
 class RenderingObject;
 typedef std::shared_ptr<RenderingObject> SpRenderingObject;
@@ -21,9 +22,12 @@ public:
 	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
 	inline float GetLifeTime() { return LifeTime; }
 	static SpRenderingObject Create();
+	void SetData(std::string _FileName);
 	~RenderingObject();
-private:
+protected:
 	RenderingObject();
+private:
+	
 	
 	float LifeTime;
 };
