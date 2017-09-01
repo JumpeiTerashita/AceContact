@@ -12,7 +12,6 @@ public:
 	static SpBullet Create();
 	SpRenderingObject RenderObj;
 	void Update();
-	void SetData();
 	void CollisionJudge();
 };
 

@@ -411,6 +411,7 @@
     <ClInclude Include="Library\RenderingObject.h" />
     <ClInclude Include="Library\Sequence.h" />
     <ClInclude Include="Library\Singleton.h" />
+    <ClInclude Include="Library\Transform.h" />
     <ClInclude Include="support\t2k_sound.h" />
     <ClInclude Include="support\t2k_support.h" />
     <None Include="DXUT\Optional\directx.ico" />

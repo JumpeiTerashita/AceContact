@@ -5,9 +5,14 @@ class Mesh : public RenderingObject
 {
 public:
 	Mesh();
+	Mesh(std::string _FileName);
+	Mesh(std::string _MeshName,std::string _TextureName);
 	~Mesh();
 	LPDIRECT3DTEXTURE9		Texture;
 	LPD3DXMESH				XMesh;
-	
+	void Render(Transform* _Ptransform);
+	void SetMesh(std::string _FileName);
+	void SetTexture(std::string _FileName);
+	void Del();
 };
 

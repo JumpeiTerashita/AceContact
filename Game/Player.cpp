@@ -4,21 +4,21 @@
 #include "../Library/RenderingObject.h"
 #include "../support/t2k_support.h"
 #include "Bullet.h"
+#include "../Library/Mesh.h"
 
 Player::Player()
 {
-	RenderObj = RenderingObject::Create();
+	RenderObj = RenderingObject::Create(new Mesh("SpaceShip_One"));
 	ObjectName = "Player";
-	RenderObj->Pos = D3DXVECTOR3(0, 0, 0);
-	RenderObj->Rot = D3DXVECTOR3(0, 0, 0);
-	RenderObj->Scl = D3DXVECTOR3(1, 1, 1);
+	transform.Pos = D3DXVECTOR3(0, 0, 0);
+	transform.Rot = D3DXVECTOR3(0, 0, 0);
+	transform.Scl = D3DXVECTOR3(1, 1, 1);
 }
 
 
 Player::~Player()
 {	
-	RenderObj->Tex->Release();
-	RenderObj->Mesh->Release();
+	
 }
 
 
@@ -27,9 +27,8 @@ SpPlayer Player::Create()
 {
 	SpPlayer SpP = SpPlayer(new Player);
 	SpP->Wp_this = SpP;
-	SpP->RenderObj->SetData("SpaceShip_One");
+	SpP->SetTransform(SpP,SpP->RenderObj);
 	SpP->AddLogicList();
-	SpP->SetRenderObj(SpP->RenderObj);
 	SpP->AddLogicMap("Player");
 	
 	SpP->RenderObj->AddRenderList();
@@ -48,24 +47,24 @@ void Player::Move()
 		//	LogicMap Test
 		t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
 		SpBullet bullet =  Bullet::Create();
-		bullet->RenderObj->Pos = RenderObj->Pos;
+		bullet->transform.Pos = transform.Pos;
 	}
 
 	if (DXUTIsKeyDown(VK_LEFT)) {
-		RenderObj->Pos.x += -1.0f;
-		RenderObj->Rot.z += D3DXToRadian(10.0f);
+		transform.Pos.x += -1.0f;
+		transform.Rot.z += D3DXToRadian(10.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_RIGHT)) {
-		RenderObj->Pos.x += 1.0f;
-		RenderObj->Rot.z += D3DXToRadian(-10.0f);
+		transform.Pos.x += 1.0f;
+		transform.Rot.z += D3DXToRadian(-10.0f);
 	}
 
 	if (DXUTIsKeyDown(VK_UP)) {
-		RenderObj->Pos.z += 1.0f;
+		transform.Pos.z += 1.0f;
 	}
 
 	if (DXUTIsKeyDown(VK_DOWN)) {
-		RenderObj->Pos.z += -1.0f;
+		transform.Pos.z += -1.0f;
 	}
 }

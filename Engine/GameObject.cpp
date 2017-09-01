@@ -13,21 +13,19 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	t2k::Support::debugTrace("GameObject Destruct : %s", ObjectName);
+	t2k::Support::debugTrace("GameObject Destruct : %s", ObjectName.c_str());
 	
+}
+
+void GameObject::SetTransform(SpGameObject _SpGameObject, SpRenderingObject _SpRenderingObject)
+{
+	_SpRenderingObject->Ptransform = &(_SpGameObject->transform);
 }
 
 void GameObject::DelObj()
 {
 	SetLifeTime(0);
 	GameObjectManager::GetInstance()->DelMap(ObjectName);
-	
-
-	if (RenderObjP != nullptr)
-	{
-		RenderObjP->SetLifeTime(0);
-		RenderObjP.reset();
-	}
 }
 
 void GameObject::AddLogicList()
@@ -60,8 +58,4 @@ SpGameObject GameObject::GetLogicMap(std::string _name)
 	return nullptr;
 }
 
-void GameObject::SetRenderObj(SpRenderingObject _RenderObjP)
-{
-	RenderObjP = _RenderObjP;
-}
 

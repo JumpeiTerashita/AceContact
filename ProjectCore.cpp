@@ -205,10 +205,10 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 	static int a = 0 ; 
 	a++ ;
 	t2k::Support::renderString(5, 5, "TEST COUNT : %d", a );
-	auto PlayerMap = GameObjectManager::GetInstance()->GetMap("Player")->RenderObjP;
+	auto PlayerMap = GameObjectManager::GetInstance()->GetMap("Player");
 	if (PlayerMap)
 	{
-		t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap->Pos.x, PlayerMap->Pos.y, PlayerMap->Pos.z);
+		t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap->transform.Pos.x, PlayerMap->transform.Pos.y, PlayerMap->transform.Pos.z);
 	}
 	//t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap,a,a);
 	//t2k::Support::renderString(100, 100, "Ace Contact");

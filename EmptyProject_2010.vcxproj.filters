@@ -175,6 +175,9 @@
     <ClInclude Include="Library\Mesh.h">
       <Filter>Library</Filter>
     </ClInclude>
+    <ClInclude Include="Library\Transform.h">
+      <Filter>Library</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

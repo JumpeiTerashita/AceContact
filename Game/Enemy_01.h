@@ -16,5 +16,4 @@ private:
 	Enemy_01();
 	
 	void Move();
-	void SetData();
 };

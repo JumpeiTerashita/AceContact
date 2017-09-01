@@ -1,34 +1,33 @@
 #pragma once
 #include <memory>
 #include <string>
+#include "Transform.h"
 
 class RenderingObject;
 typedef std::shared_ptr<RenderingObject> SpRenderingObject;
 typedef std::weak_ptr<RenderingObject> WpRenderingObject;
 
+
 class RenderingObject
 {
 public:
 	WpRenderingObject Wp_this;
-	LPDIRECT3DTEXTURE9		Tex;
-	LPD3DXMESH				Mesh;
-	D3DXVECTOR3				Rot;
-	D3DXVECTOR3				Pos;
-	D3DXVECTOR3				Scl;
+	Transform* Ptransform;
 	bool isEnable;
-	void Render(IDirect3DDevice9* pd3dDevice);
+	virtual void Render(Transform* _Ptransform) = 0;
+	virtual void Del() = 0;
 	void AddRenderList();
 	//	TODO LifeTime ... GameObjectÇ™éùÇ¡ÇƒÇÈÅ@ÇQÇ¬LifeTimeÇ†ÇÒÇÃÇ«Ç§Ç»ÇÃÅH
 	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
 	inline float GetLifeTime() { return LifeTime; }
-	static SpRenderingObject Create();
-	void SetData(std::string _FileName);
-	~RenderingObject();
+	static SpRenderingObject Create(RenderingObject* _p);
+	virtual ~RenderingObject();
+	inline void SetDeviceP(IDirect3DDevice9* pd3dDevice) { Pd3dDevice = pd3dDevice; }
+	inline IDirect3DDevice9* GetDeviceP() { return Pd3dDevice; }
 protected:
 	RenderingObject();
 private:
-	
-	
 	float LifeTime;
+	IDirect3DDevice9* Pd3dDevice;
 };
 

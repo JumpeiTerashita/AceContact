@@ -12,14 +12,18 @@ GraphicsManager::GraphicsManager()
 
 GraphicsManager::~GraphicsManager()
 {
-	//TODO Mapのリリース　どうやって？
+	std::list< SpRenderingObject >::iterator it = RenderingList.begin();
+	while (it != RenderingList.end()) {
+		(*it)->Del();
+		it++;
+	}
 }
 
 void GraphicsManager::Render()
 {
 	std::list< SpRenderingObject >::iterator it = RenderingList.begin();
 	while (it != RenderingList.end()) {
-		(*it)->Render(Pd3dDevice);
+		(*it)->Render((*it)->Ptransform);
 		if (0 == (*it)->GetLifeTime())
 		{
 			//delete (*it);
