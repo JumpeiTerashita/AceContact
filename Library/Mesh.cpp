@@ -38,7 +38,7 @@ void Mesh::SetMesh(std::string _FileName)
 	{
 		wchar_t xbuf[64];
 		t2k::Support::toWideChar(xbuf, (_FileName + ".x").c_str(), sizeof(xbuf));
-		D3DXLoadMeshFromX(xbuf, D3DXMESH_MANAGED, Graphic->GetDevice(), NULL, NULL, NULL, NULL, &XMesh);
+		D3DXLoadMeshFromX(xbuf, D3DXMESH_MANAGED, DXUTGetD3D9Device(), NULL, NULL, NULL, NULL, &XMesh);
 		Graphic->AddModel((_FileName + ".x"), &XMesh);
 	}
 }
@@ -51,7 +51,7 @@ void Mesh::SetTexture(std::string _FileName)
 	{
 		wchar_t buf[64];
 		t2k::Support::toWideChar(buf, (_FileName + ".bmp").c_str(), sizeof(buf));
-		D3DXCreateTextureFromFile(GraphicsManager::GetInstance()->GetDevice(), buf, &Texture);
+		D3DXCreateTextureFromFile(DXUTGetD3D9Device(), buf, &Texture);
 		Graphic->AddTexture((_FileName + ".bmp"), &Texture);
 	}
 }
@@ -70,7 +70,7 @@ void Mesh::Render(Transform* _Ptransform)
 	D3DXMatrixTranslation(&PosMtx, _Ptransform->Pos.x, _Ptransform->Pos.y, _Ptransform->Pos.z);
 	WldMtx = SclMtx * RotMtx * PosMtx;
 
-	auto pd3dDevice = GetDeviceP();
+	auto pd3dDevice = DXUTGetD3D9Device();
 
 	// テクスチャ適用
 	if(Texture != NULL) pd3dDevice->SetTexture( 0, Texture ) ;

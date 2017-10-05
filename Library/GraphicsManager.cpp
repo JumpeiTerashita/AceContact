@@ -12,6 +12,12 @@ GraphicsManager::GraphicsManager()
 
 GraphicsManager::~GraphicsManager()
 {
+	
+	
+}
+
+void GraphicsManager::Destroy()
+{
 	std::list< SpRenderingObject >::iterator it = RenderingList.begin();
 	while (it != RenderingList.end()) {
 		(*it)->Del();

@@ -1,17 +1,18 @@
 #pragma once
 #include "GameObject.h"
 #include "../Library/Camera.h"
-#include "../Library/Singleton.h"
 
-class GameCamera :public GameObject,public Singleton<GameCamera>
+class GameCamera;
+typedef std::shared_ptr<GameCamera> SpGameCamera;
+class GameCamera :public GameObject
 {
 public:
 	int CameraMode;
 	Camera CameraStatus;
 	GameCamera();
-	~GameCamera();
-	void Create();
+	~GameCamera() {};
 	void Update();
 	void Move();
+	static SpGameCamera Create();
 };
 

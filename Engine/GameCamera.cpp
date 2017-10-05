@@ -1,9 +1,6 @@
 #include "DXUT.h"
 #include "GameCamera.h"
 
-
-std::shared_ptr<GameCamera> GameCamera::Instance = nullptr;
-
 GameCamera::GameCamera()
 {
 	ObjectName = "GameCamera";
@@ -12,25 +9,25 @@ GameCamera::GameCamera()
 
 }
 
-
-GameCamera::~GameCamera()
+SpGameCamera GameCamera::Create()
 {
-}
-
-void GameCamera::Create()
-{
-	AddLogicList();
-	AddLogicMap(ObjectName);
+	SpGameCamera SpGC = SpGameCamera(new GameCamera);
+	SpGC->Wp_this = SpGC;
+	SpGC->AddLogicList();
+	SpGC->AddLogicMap(SpGC->ObjectName);
+	return SpGC;
 }
 
 void GameCamera::Update()
 {
 	Move();
-	CameraStatus.SetCamera(CameraStatus.Pd3dDevice);
+	CameraStatus.SetCamera();
 }
 
 void GameCamera::Move()
 {
+	if (CameraMode == 1) return;
+
 	if (CameraMode == 0)
 	{
 		if (DXUTIsKeyDown(VK_LEFT)) {

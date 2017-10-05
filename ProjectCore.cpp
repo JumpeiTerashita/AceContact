@@ -14,8 +14,8 @@
 #include "Game\Enemy_01.h"
 #include <memory>
 
-LPDIRECT3DTEXTURE9		g_pTex;
-LPD3DXMESH				g_pMesh;
+//LPDIRECT3DTEXTURE9		g_pTex;
+//LPD3DXMESH				g_pMesh;
 
 //--------------------------------------------------------------------------------------
 // Rejects any D3D9 devices that aren't acceptable to the app by returning false
@@ -53,11 +53,9 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	// これは消さない
 	t2k::Support::createDeviece() ;
 
-	GraphicsManager::GetInstance()->SetDevice(pd3dDevice);
 	
-	GameCamera::GetInstance()->Wp_this = (GameCamera::GetInstance());
-	GameCamera::GetInstance()->Create();
-	GameCamera::GetInstance()->CameraStatus.SetCamera(pd3dDevice);
+	SpGameCamera CameraTest = GameCamera::Create();
+	
 	
 	SpEnemy_01 EnemyTest = Enemy_01::Create();
 
@@ -119,9 +117,13 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
 	if( DXUTWasKeyPressed('A') ) {
 
 	t2k::Support::debugTrace("カメラモード変更") ;
+	
+	auto Camera = GameObjectManager::GetInstance()->GetMap("GameCamera");
+	
+	/*
 	if (GameCamera::GetInstance()->CameraMode == 0) GameCamera::GetInstance()->CameraMode = 1;
 	else GameCamera::GetInstance()->CameraMode = 0;
-
+	*/
 	
 	}
 
@@ -170,36 +172,6 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 
 
 	GraphicsManager::GetInstance()->Render();
-	//// ワールドマトリクス設定
-	//D3DXMATRIX SclMtx, RotMtx, PosMtx, WldMtx ;
-	//D3DXMatrixScaling( &SclMtx, g_scl.x, g_scl.y, g_scl.z );
-
-	//D3DXMatrixRotationYawPitchRoll( &RotMtx, g_rot.y, g_rot.x, g_rot.z ) ;
-	//D3DXMatrixTranslation( &PosMtx, g_pos.x, g_pos.y, g_pos.z ) ;
-	//WldMtx = SclMtx * RotMtx * PosMtx ;
-
-	//// テクスチャ適用
-	//pd3dDevice->SetTexture( 0, g_pTex ) ;
-
-	//// 通常合成
-	//pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE ) ;
-	//pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1 ) ;
-	//pd3dDevice->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE ) ;
-	//pd3dDevice->SetRenderState( D3DRS_SRCBLEND, D3DBLEND_SRCALPHA ) ;	
-	//pd3dDevice->SetRenderState( D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA ) ;
-
-	////ライティングOFF
-	//pd3dDevice->SetRenderState( D3DRS_LIGHTING, FALSE );
-	//pd3dDevice->LightEnable( 0, FALSE ) ;
-
-	//pd3dDevice->SetTransform( D3DTS_WORLD, &WldMtx );
-
- //   // Render the scene
- //   if( SUCCEEDED( pd3dDevice->BeginScene() ) )
- //   {
-	//	g_pMesh->DrawSubset( 0 ) ;
- //       V( pd3dDevice->EndScene() );
- //   }
 	
 	
 	static int a = 0 ; 
@@ -210,8 +182,6 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 	{
 		t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap->transform.Pos.x, PlayerMap->transform.Pos.y, PlayerMap->transform.Pos.z);
 	}
-	//t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap,a,a);
-	//t2k::Support::renderString(100, 100, "Ace Contact");
 }
 
 
@@ -240,9 +210,9 @@ void CALLBACK OnD3D9LostDevice( void* pUserContext )
 void CALLBACK OnD3D9DestroyDevice( void* pUserContext )
 {
 
-	g_pTex->Release() ;
-	g_pMesh->Release();
-
+	/*g_pTex->Release() ;
+	g_pMesh->Release();*/
+	GraphicsManager::GetInstance()->Destroy();
 	// これは消さない
 	t2k::Support::destroyDevice() ;
 }

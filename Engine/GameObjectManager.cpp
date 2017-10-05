@@ -1,6 +1,7 @@
 #include "DXUT.h"
 #include "GameObjectManager.h"
 #include "GameObject.h"
+#include "GameCamera.h"
 #include <list>
 
 std::shared_ptr<GameObjectManager> GameObjectManager::Instance = nullptr;
@@ -16,6 +17,12 @@ GameObjectManager::~GameObjectManager()
 
 void GameObjectManager::Update()
 {
+	/*if (0 == ->CameraMode)
+	{
+		GameCamera::GetInstance()->Update();
+		return;
+	}*/
+
 	std::list< SpGameObject >::iterator it = LogicList.begin();
 	while (it != LogicList.end()) {
 		(*it)->Update();

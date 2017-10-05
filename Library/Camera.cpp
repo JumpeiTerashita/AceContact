@@ -14,9 +14,9 @@ Camera::~Camera()
 {
 }
 
-void Camera::SetCamera(IDirect3DDevice9* pd3dDevice)
+void Camera::SetCamera()
 {
-	Pd3dDevice = pd3dDevice;
+	auto pd3dDevice = DXUTGetD3D9Device();
 	//-------------------------------------------------------------------------
 	// ÉJÉÅÉâê›íË
 	D3DXMatrixLookAtLH(&View, &EyePt, &LookatPt, &UpVec);

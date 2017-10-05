@@ -22,12 +22,9 @@ public:
 	inline float GetLifeTime() { return LifeTime; }
 	static SpRenderingObject Create(RenderingObject* _p);
 	virtual ~RenderingObject();
-	inline void SetDeviceP(IDirect3DDevice9* pd3dDevice) { Pd3dDevice = pd3dDevice; }
-	inline IDirect3DDevice9* GetDeviceP() { return Pd3dDevice; }
 protected:
 	RenderingObject();
 private:
 	float LifeTime;
-	IDirect3DDevice9* Pd3dDevice;
 };
 

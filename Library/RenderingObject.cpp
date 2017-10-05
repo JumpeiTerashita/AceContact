@@ -7,7 +7,6 @@ RenderingObject::RenderingObject()
 {
 	isEnable = true;
 	LifeTime = -1;
-	SetDeviceP(GraphicsManager::GetInstance()->GetDevice());
 }
 
 

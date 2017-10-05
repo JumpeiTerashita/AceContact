@@ -1,9 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (EmptyProject.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  GameCamera.cpp
-c:\users\vantan\documents\atelier\children\acecontact\engine\gamecamera.cpp(5): warning C4356: 'Singleton<GameCamera>::Instance': 静的データ メンバーは派生クラスを使って初期化できません。
-  GameObject.cpp
-  GameObjectManager.cpp
-c:\users\vantan\documents\atelier\children\acecontact\engine\gameobjectmanager.cpp(6): warning C4356: 'Singleton<GameObjectManager>::Instance': 静的データ メンバーは派生クラスを使って初期化できません。
   Bullet.cpp
   Enemy_01.cpp
   Player.cpp
