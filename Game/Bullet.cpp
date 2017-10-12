@@ -8,7 +8,7 @@
 Bullet::Bullet()
 {
 	ObjectName = "Bullet";
-	RenderObj = RenderingObject::Create(new Mesh("SpaceShip_One"));
+	RenderObj = RenderingObject::Create(Mesh::CreateMesh("SpaceShip_One"));
 
 
 	transform.Pos = D3DXVECTOR3(0, 0, 0);
@@ -16,7 +16,7 @@ Bullet::Bullet()
 	transform.Rot = D3DXVECTOR3(0, 0, 0);
 	transform.Scl = D3DXVECTOR3(1, 1, 1);
 
-	
+	SetLifeTime(100);
 }
 
 
@@ -32,7 +32,6 @@ SpBullet Bullet::Create()
 	SpB->Wp_this = SpB;
 	SpB->SetTransform(SpB, SpB->RenderObj);
 	SpB->AddLogicList();
-	//SpB->SetRenderObj(SpB->RenderObj);
 	SpB->AddLogicMap(SpB->ObjectName);
 	
 	SpB->RenderObj->AddRenderList();
@@ -44,16 +43,21 @@ SpBullet Bullet::Create()
 
 void Bullet::Update()
 {
-	transform.Pos.z += 1.0f;
+
+
+	transform.Pos += GetForwardVec(&transform.Rot);
 
 	CollisionJudge();
 
-	// TODO ’eÁ‚»‚¤‚Æ‚·‚é‚ÆŽ€‚Ê
-	if (transform.Pos.z >= 40)
+	SetLifeTime(GetLifeTime()-1);
+
+	
+	if (GetLifeTime() <= 0)
 	{
-		RenderObj->SetLifeTime(0);
-		SetLifeTime(0);
+		Delete();
 	}
+
+	
 }
 
 void Bullet::CollisionJudge()
@@ -78,11 +82,17 @@ void Bullet::CollisionJudge()
 	if (DistX2 + DistY2 + DistZ2 <= DistR2)
 	{
 		// Hit
-		GameObjectManager::GetInstance()->GetMap("EnemyOne")->DelObj();
+		GameObjectManager::GetInstance()->GetMap("EnemyOne")->Delete();
 
-		DelObj();
+		Delete();
 		
 	}
 	
 
+}
+
+void Bullet::Delete()
+{
+	RenderObj->SetLifeTime(0);
+	SetLifeTime(0);
 }

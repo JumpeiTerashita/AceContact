@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "GameCamera.h"
 #include <list>
+#include "..\support\t2k_support.h"
 
 std::shared_ptr<GameObjectManager> GameObjectManager::Instance = nullptr;
 
@@ -28,6 +29,8 @@ void GameObjectManager::Update()
 		(*it)->Update();
 		if (0 == (*it)->GetLifeTime())
 		{
+		t2k::Support::debugTrace("%s ‚ª Žõ–½ƒ[ƒ", (*it)->ObjectName.c_str());
+		(*it)->DelObj();
 		//delete (*it);
 		it = LogicList.erase(it);
 		continue;

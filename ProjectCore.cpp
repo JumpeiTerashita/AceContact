@@ -12,6 +12,7 @@
 #include "Engine\GameCamera.h"
 #include "Game\Player.h"
 #include "Game\Enemy_01.h"
+#include "Game\Plane.h"
 #include <memory>
 
 //LPDIRECT3DTEXTURE9		g_pTex;
@@ -53,6 +54,7 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	// ‚±‚ê‚ÍÁ‚³‚È‚¢
 	t2k::Support::createDeviece() ;
 
+	SpPlane PlaneTest = Plane::Create();
 	
 	SpGameCamera CameraTest = GameCamera::Create();
 	
@@ -60,6 +62,8 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 	SpEnemy_01 EnemyTest = Enemy_01::Create();
 
 	SpPlayer PlayerTest = Player::Create();
+
+
 	
 	
 
@@ -181,6 +185,7 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 	if (PlayerMap)
 	{
 		t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap->transform.Pos.x, PlayerMap->transform.Pos.y, PlayerMap->transform.Pos.z);
+		t2k::Support::renderString(5, 40, "Forward Vec : X = %f, Y = %f, Z = %f", PlayerMap->ForwardVec.x, PlayerMap->ForwardVec.y, PlayerMap->ForwardVec.z);
 	}
 }
 

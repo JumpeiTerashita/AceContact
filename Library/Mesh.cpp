@@ -24,10 +24,22 @@ Mesh::Mesh(std::string _MeshName, std::string _TextureName)
 	SetTexture(_TextureName);
 }
 
+
+
 Mesh::~Mesh()
 {
 	//Texture->Release();
 	//XMesh->Release();
+}
+
+Mesh * Mesh::CreateMesh(std::string _MeshName)
+{
+	//	メッシュだけつくりたいとき用
+	Mesh* tmp = new Mesh();
+	tmp->SetMesh(_MeshName);
+	tmp->SetTexture();
+
+	return tmp;
 }
 
 void Mesh::SetMesh(std::string _FileName)
@@ -46,6 +58,14 @@ void Mesh::SetMesh(std::string _FileName)
 void Mesh::SetTexture(std::string _FileName)
 {
 	auto Graphic = GraphicsManager::GetInstance();
+
+	if (_FileName == "")
+	{
+		Texture = NULL;
+		if (!Graphic->IsInRenderingTexMap("Undefined")) Graphic->AddTexture(("Undefined"), &Texture);
+		return;
+	}
+
 	if (Graphic->IsInRenderingTexMap(_FileName + ".bmp")) Texture = *(Graphic->GetTexture(_FileName + ".bmp")); 
 	else
 	{
@@ -74,6 +94,7 @@ void Mesh::Render(Transform* _Ptransform)
 
 	// テクスチャ適用
 	if(Texture != NULL) pd3dDevice->SetTexture( 0, Texture ) ;
+	else pd3dDevice->SetTexture(0, 0);
 
 	// 通常合成
 	pd3dDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE ) ;

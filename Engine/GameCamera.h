@@ -14,5 +14,7 @@ public:
 	void Update();
 	void Move();
 	static SpGameCamera Create();
+private:
+	void Delete();
 };
 

@@ -1,12 +1,13 @@
 #include "DXUT.h"
 #include "GameCamera.h"
+#include "GameObjectManager.h"
 
 GameCamera::GameCamera()
 {
 	ObjectName = "GameCamera";
 	CameraMode = 1;
 	CameraStatus = *(new Camera());
-
+	transform.Pos = D3DXVECTOR3(CameraStatus.EyePt);
 }
 
 SpGameCamera GameCamera::Create()
@@ -18,15 +19,28 @@ SpGameCamera GameCamera::Create()
 	return SpGC;
 }
 
+void GameCamera::Delete()
+{
+	
+	SetLifeTime(0);
+}
+
 void GameCamera::Update()
 {
+	
 	Move();
+
 	CameraStatus.SetCamera();
 }
 
 void GameCamera::Move()
 {
-	if (CameraMode == 1) return;
+	auto GOMng = GameObjectManager::GetInstance();
+	
+	transform.Pos=GOMng->GetMap("Player")->transform.Pos + D3DXVECTOR3(0.0f, 3.0f, -15.0f);
+	CameraStatus.EyePt = transform.Pos;
+	CameraStatus.LookatPt = GOMng->GetMap("Player")->transform.Pos;
+	/*if (CameraMode == 1) return;
 
 	if (CameraMode == 0)
 	{
@@ -52,5 +66,5 @@ void GameCamera::Move()
 			CameraStatus.LookatPt.z += -1.0f;
 		}
 	}
-	
+	*/
 }

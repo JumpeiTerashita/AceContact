@@ -125,6 +125,12 @@
     <ClCompile Include="Library\Mesh.cpp">
       <Filter>Library</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Plane.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DirectXMass.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
@@ -176,6 +182,12 @@
       <Filter>Library</Filter>
     </ClInclude>
     <ClInclude Include="Library\Transform.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Plane.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DirectXMass.h">
       <Filter>Library</Filter>
     </ClInclude>
   </ItemGroup>

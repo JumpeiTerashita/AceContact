@@ -3,6 +3,7 @@
 #include "RenderingObject.h"
 #include <memory>
 
+
 std::shared_ptr<GraphicsManager> GraphicsManager::Instance = nullptr;
 
 GraphicsManager::GraphicsManager()
@@ -12,8 +13,6 @@ GraphicsManager::GraphicsManager()
 
 GraphicsManager::~GraphicsManager()
 {
-	
-	
 }
 
 void GraphicsManager::Destroy()

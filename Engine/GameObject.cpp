@@ -24,8 +24,17 @@ void GameObject::SetTransform(SpGameObject _SpGameObject, SpRenderingObject _SpR
 
 void GameObject::DelObj()
 {
-	SetLifeTime(0);
 	GameObjectManager::GetInstance()->DelMap(ObjectName);
+}
+
+D3DXVECTOR3 GameObject::GetForwardVec(D3DXVECTOR3 * Rot, D3DXVECTOR3 * DefaltForward)
+{
+	D3DXVECTOR3 FVec;
+	D3DXMATRIX RM;
+	D3DXMatrixRotationYawPitchRoll(&RM, transform.Rot.y, transform.Rot.x, transform.Rot.z);
+	D3DXVec3TransformCoord(&FVec,DefaltForward, &RM);
+	ForwardVec = FVec;
+	return FVec;
 }
 
 void GameObject::AddLogicList()

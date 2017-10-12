@@ -17,7 +17,6 @@ public:
 	virtual void Render(Transform* _Ptransform) = 0;
 	virtual void Del() = 0;
 	void AddRenderList();
-	//	TODO LifeTime ... GameObject‚ª‚Á‚Ä‚é@‚Q‚ÂLifeTime‚ ‚ñ‚Ì‚Ç‚¤‚È‚ÌH
 	inline void SetLifeTime(float _LifeTime) { LifeTime = _LifeTime; }
 	inline float GetLifeTime() { return LifeTime; }
 	static SpRenderingObject Create(RenderingObject* _p);

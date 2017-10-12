@@ -9,9 +9,11 @@ class Bullet:public GameObject
 public:
 	Bullet();
 	~Bullet();
-	static SpBullet Create();
 	SpRenderingObject RenderObj;
+	static SpBullet Create();
 	void Update();
 	void CollisionJudge();
+private:
+	void Delete();
 };
 

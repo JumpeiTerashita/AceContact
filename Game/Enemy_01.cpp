@@ -9,6 +9,7 @@ Enemy_01::Enemy_01()
 	ObjectName = "EnemyOne";
 	
 	RenderObj = RenderingObject::Create(new Mesh("Fighter"));
+	SetLifeTime(1);
 	transform.Pos = D3DXVECTOR3(0, 0, 30);
 	transform.Rot = D3DXVECTOR3(0, 3.14, 0);
 	transform.Scl = D3DXVECTOR3(0.5, 0.5, 0.5);
@@ -54,4 +55,10 @@ void Enemy_01::Move()
 	}
 
 	
+}
+
+void Enemy_01::Delete()
+{
+	RenderObj->SetLifeTime(0);
+	SetLifeTime(0);
 }

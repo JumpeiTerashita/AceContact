@@ -8,6 +8,7 @@ typedef std::shared_ptr<Player> SpPlayer;
 class Player : public GameObject
 {
 public:
+ 
 	SpRenderingObject RenderObj;
 	void Update();
 	static SpPlayer Create();
@@ -15,7 +16,8 @@ public:
 private:
 	Player();
 	void Move();
-
+	void Shoot();
+	void Delete();
 };
 
 

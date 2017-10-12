@@ -24,3 +24,5 @@ void Camera::SetCamera()
 	D3DXMatrixPerspectiveFovLH(&Proj, D3DX_PI / 4.0f, 1.0f, 1.0f, 10000.0f);
 	pd3dDevice->SetTransform(D3DTS_PROJECTION, &Proj);
 }
+
+
