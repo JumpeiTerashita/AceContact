@@ -28,6 +28,7 @@ void GameObjectManager::Update()
 
 	std::list< SpGameObject >::iterator it = LogicList.begin();
 	while (it != LogicList.end()) {
+		(*it)->Conduct();
 		(*it)->Update();
 		if (0 == (*it)->GetLifeTime())
 		{

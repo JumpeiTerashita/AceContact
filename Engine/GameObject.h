@@ -12,11 +12,13 @@ namespace ktb
 	class GameObject
 	{
 	public:
+		float Timer;
 		WpGameObject Wp_this;
 		std::string ObjectName;
 		Transform transform;
 		GameObject();
 		virtual ~GameObject();
+		
 		virtual void Delete() = 0;
 		virtual void Update() = 0;
 		void AddLogicList();
@@ -25,6 +27,7 @@ namespace ktb
 		inline void SetLifeTime(const float & _LifeTime) { LifeTime = _LifeTime; }
 		SpGameObject GetLogicMap(const std::string & _name);
 		inline float GetLifeTime() { return LifeTime; }
+		void Conduct();
 		void DelObj();
 		D3DXVECTOR3 GetForwardVec(const D3DXVECTOR3 & Rot, const D3DXVECTOR3 & DefaltForward = (D3DXVECTOR3(0, 0, 1)));
 	private:

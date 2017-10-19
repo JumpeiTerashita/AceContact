@@ -28,10 +28,12 @@ Bullet::~Bullet()
 	//RenderObj->Mesh->Release();
 }
 
-SpBullet Bullet::Create()
+SpBullet Bullet::Create(const Transform & _Transform)
 {
 	SpBullet SpB = SpBullet(new Bullet);
 	SpB->Wp_this = SpB;
+	SpB->transform.Pos = _Transform.Pos;
+	SpB->transform.Rot = _Transform.Rot;
 	SpB->SetTransform(SpB, SpB->RenderObj);
 	SpB->AddLogicList();
 	SpB->AddLogicMap(SpB->ObjectName);
@@ -65,19 +67,14 @@ void Bullet::Update()
 void Bullet::CollisionJudge()
 {
 	if (!GameObjectManager::GetInstance()->IsInLogicMap("EnemyOne")) return;
-	
+	if (isEnemys) return;
 	
 	auto EnemyTransform = GameObjectManager::GetInstance()->GetMap("EnemyOne")->transform;
 
 	auto BulletPos = transform.Pos;
 	auto EnemyPos = EnemyTransform.Pos;
 	auto Dist = BulletPos - EnemyPos;
-
-	float DistX2 = Dist.x*Dist.x;
-	float DistY2 = Dist.y*Dist.y;
-	float DistZ2 = Dist.z*Dist.z;
 	float DistR = 1 + 1;
-	float DistR2 = DistR*DistR;
 
 	//if (DistX2 + DistY2 + DistZ2 <= DistR2)
 	if( D3DXVec3Length( &Dist ) <= DistR )

@@ -1,8 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中間ディレクトリ (Debug\) に別のプロジェクト (EmptyProject.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
-  GameObject.cpp
   Player.cpp
-  コードを生成中...
-SDKsound.obj : warning LNK4075: /EDITANDCONTINUE は /SAFESEH の指定によって無視されます。
-LINK : warning LNK4199: /DELAYLOAD:d3dx10d.lib は無視されます。d3dx10d.lib にインポートがありません。
   EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.exe
   EmptyProject_2010.vcxproj -> C:\Users\vantan\Documents\Atelier\Children\AceContact\Debug\AceContact.pdb (Full PDB)

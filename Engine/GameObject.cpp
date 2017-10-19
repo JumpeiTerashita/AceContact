@@ -9,7 +9,7 @@ GameObject::GameObject()
 {
 	ObjectName = "None";
 	LifeTime = -1;
-
+	Timer = 0;
 }
 
 
@@ -36,6 +36,11 @@ D3DXVECTOR3 GameObject::GetForwardVec(const D3DXVECTOR3 & Rot, const D3DXVECTOR3
 	D3DXMatrixRotationYawPitchRoll(&RM, transform.Rot.y, transform.Rot.x, transform.Rot.z);
 	D3DXVec3TransformCoord(&FVec,&DefaltForward, &RM);
 	return FVec;
+}
+
+void GameObject::Conduct()
+{
+	Timer++;
 }
 
 void GameObject::AddLogicList()

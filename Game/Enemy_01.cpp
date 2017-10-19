@@ -3,6 +3,7 @@
 #include "../Library/GraphicsManager.h"
 #include "../Library/RenderingObject.h"
 #include "../Library/Mesh.h"
+#include "Bullet.h"
 
 using namespace ktb;
 
@@ -17,7 +18,6 @@ Enemy_01::Enemy_01()
 	transform.Scl = D3DXVECTOR3(0.5, 0.5, 0.5);
 	
 }
-
 
 Enemy_01::~Enemy_01()
 {
@@ -40,6 +40,18 @@ SpEnemy_01 Enemy_01::Create()
 void Enemy_01::Update()
 {
 	Move();
+	Shoot();
+}
+
+void Enemy_01::Shoot()
+{
+	if (Timer>= 50)
+	{
+		Timer = 0;
+		SpBullet bullet = Bullet::Create(transform);
+		bullet->isEnemys = true;
+	}
+
 }
 
 void Enemy_01::Move()

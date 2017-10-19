@@ -16,7 +16,7 @@ namespace ktb
 		~Enemy_01();
 	private:
 		Enemy_01();
-
+		void Shoot();
 		void Move();
 		void Delete();
 	};

@@ -77,9 +77,8 @@ void Player::Move()
 void Player::Shoot()
 {
 	t2k::Support::debugTrace("’eŒ‚‚Á‚½‚Ë");
-	SpBullet bullet = Bullet::Create();
-	bullet->transform.Pos = transform.Pos;
-	bullet->transform.Rot = transform.Rot;
+	SpBullet bullet = Bullet::Create(transform);
+	bullet->isEnemys = false;
 }
 
 void Player::Delete()
