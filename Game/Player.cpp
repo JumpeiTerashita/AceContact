@@ -6,6 +6,8 @@
 #include "Bullet.h"
 #include "../Library/Mesh.h"
 
+using namespace ktb;
+
 Player::Player()
 {
 	RenderObj = RenderingObject::Create(new Mesh("SpaceShip_One"));
@@ -61,7 +63,7 @@ void Player::Move()
 		transform.Rot.y += D3DXToRadian(-10.0f);
 	}
 
-	GetForwardVec(&transform.Rot);
+	auto ForwardVec = GetForwardVec(transform.Rot);
 
 	if (DXUTIsKeyDown(VK_UP)) {
 		transform.Pos += ForwardVec;
@@ -78,7 +80,6 @@ void Player::Shoot()
 	SpBullet bullet = Bullet::Create();
 	bullet->transform.Pos = transform.Pos;
 	bullet->transform.Rot = transform.Rot;
-	bullet->ForwardVec = ForwardVec;
 }
 
 void Player::Delete()

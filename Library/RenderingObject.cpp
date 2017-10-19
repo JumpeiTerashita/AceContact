@@ -3,6 +3,8 @@
 #include "GraphicsManager.h"
 #include "..\support\t2k_support.h"
 
+using namespace ktb;
+
 RenderingObject::RenderingObject()
 {
 	isEnable = true;

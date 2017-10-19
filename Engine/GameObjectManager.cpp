@@ -5,6 +5,8 @@
 #include <list>
 #include "..\support\t2k_support.h"
 
+using namespace ktb;
+
 std::shared_ptr<GameObjectManager> GameObjectManager::Instance = nullptr;
 
 GameObjectManager::GameObjectManager()
@@ -40,7 +42,7 @@ void GameObjectManager::Update()
 	
 }
 
-bool GameObjectManager::IsInLogicMap(std::string _name)
+bool GameObjectManager::IsInLogicMap(const std::string & _name)
 {
 	auto itr = LogicMap.find(_name);
 	if (itr != LogicMap.end()) return true;

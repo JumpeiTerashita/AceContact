@@ -4,6 +4,8 @@
 #include "../Library/RenderingObject.h"
 #include "../Library/Mesh.h"
 
+using namespace ktb;
+
 Enemy_01::Enemy_01()
 {
 	ObjectName = "EnemyOne";

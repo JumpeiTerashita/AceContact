@@ -2,7 +2,7 @@
 #include "Plane.h"
 #include "..\Library\Mesh.h"
 
-
+using namespace ktb;
 
 Plane::Plane()
 {

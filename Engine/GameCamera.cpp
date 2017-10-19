@@ -2,6 +2,8 @@
 #include "GameCamera.h"
 #include "GameObjectManager.h"
 
+using namespace ktb;
+
 GameCamera::GameCamera()
 {
 	ObjectName = "GameCamera";

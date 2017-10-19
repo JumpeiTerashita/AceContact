@@ -7,24 +7,24 @@
 //	HACK	設計を楽しもう
 //	ライブラリ
 
+using namespace ktb;
+
 Mesh::Mesh()
 {
 
 }
 
-Mesh::Mesh(std::string _FileName)
+Mesh::Mesh(const std::string& _FileName)
 {
 	SetMesh(_FileName);
 	SetTexture(_FileName);
 }
 
-Mesh::Mesh(std::string _MeshName, std::string _TextureName)
+Mesh::Mesh(const std::string& _MeshName, const std::string& _TextureName)
 {
 	SetMesh(_MeshName);
 	SetTexture(_TextureName);
 }
-
-
 
 Mesh::~Mesh()
 {
@@ -32,7 +32,7 @@ Mesh::~Mesh()
 	//XMesh->Release();
 }
 
-Mesh * Mesh::CreateMesh(std::string _MeshName)
+Mesh * Mesh::CreateMesh(const std::string& _MeshName)
 {
 	//	メッシュだけつくりたいとき用
 	Mesh* tmp = new Mesh();
@@ -42,7 +42,7 @@ Mesh * Mesh::CreateMesh(std::string _MeshName)
 	return tmp;
 }
 
-void Mesh::SetMesh(std::string _FileName)
+void Mesh::SetMesh(const std::string& _FileName)
 {
 	auto Graphic = GraphicsManager::GetInstance();
 	if (Graphic->IsInRenderingModelMap(_FileName + ".x"))	XMesh = *(Graphic->GetModel(_FileName + ".x"));
@@ -55,7 +55,7 @@ void Mesh::SetMesh(std::string _FileName)
 	}
 }
 
-void Mesh::SetTexture(std::string _FileName)
+void Mesh::SetTexture(const std::string& _FileName)
 {
 	auto Graphic = GraphicsManager::GetInstance();
 

@@ -1,6 +1,7 @@
 #include "DXUT.h"
 #include "Camera.h"
 
+using namespace ktb;
 
 Camera::Camera()
 {

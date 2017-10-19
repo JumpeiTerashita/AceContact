@@ -5,6 +5,8 @@
 #include "..\Library\Mesh.h"
 #include "..\support\t2k_support.h"
 
+using namespace ktb;
+
 Bullet::Bullet()
 {
 	ObjectName = "Bullet";
@@ -45,7 +47,7 @@ void Bullet::Update()
 {
 
 
-	transform.Pos += GetForwardVec(&transform.Rot);
+	transform.Pos += GetForwardVec(transform.Rot);
 
 	CollisionJudge();
 
@@ -67,8 +69,6 @@ void Bullet::CollisionJudge()
 	
 	auto EnemyTransform = GameObjectManager::GetInstance()->GetMap("EnemyOne")->transform;
 
-
-
 	auto BulletPos = transform.Pos;
 	auto EnemyPos = EnemyTransform.Pos;
 	auto Dist = BulletPos - EnemyPos;
@@ -79,7 +79,8 @@ void Bullet::CollisionJudge()
 	float DistR = 1 + 1;
 	float DistR2 = DistR*DistR;
 
-	if (DistX2 + DistY2 + DistZ2 <= DistR2)
+	//if (DistX2 + DistY2 + DistZ2 <= DistR2)
+	if( D3DXVec3Length( &Dist ) <= DistR )
 	{
 		// Hit
 		GameObjectManager::GetInstance()->GetMap("EnemyOne")->Delete();

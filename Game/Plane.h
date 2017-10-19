@@ -3,17 +3,21 @@
 #include "..\Engine\GameObject.h"
 #include "..\Library\RenderingObject.h"
 
-class Plane;
-typedef std::shared_ptr<Plane> SpPlane;
-class Plane:public GameObject
+namespace ktb
 {
-public:
-	static SpPlane Create();
-	SpRenderingObject RenderObj;
-	void Update();
-	Plane();
-	~Plane();
-private:
-	void Delete();
-};
+	class Plane;
+	typedef std::shared_ptr<Plane> SpPlane;
+	class Plane :public GameObject
+	{
+	public:
+		static SpPlane Create();
+		SpRenderingObject RenderObj;
+		void Update();
+		Plane();
+		~Plane();
+	private:
+		void Delete();
+	};
+}
+
 

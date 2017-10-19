@@ -128,9 +128,6 @@
     <ClCompile Include="Game\Plane.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Library\DirectXMass.cpp">
-      <Filter>Library</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DXUT\Optional\SDKsound.h">
@@ -186,9 +183,6 @@
     </ClInclude>
     <ClInclude Include="Game\Plane.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\DirectXMass.h">
-      <Filter>Library</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

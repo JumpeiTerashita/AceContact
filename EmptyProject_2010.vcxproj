@@ -394,7 +394,6 @@
     <ClCompile Include="Game\Plane.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Library\Camera.cpp" />
-    <ClCompile Include="Library\DirectXMass.cpp" />
     <ClCompile Include="Library\GraphicsManager.cpp" />
     <ClCompile Include="Library\Mesh.cpp" />
     <ClCompile Include="Library\RenderingObject.cpp" />
@@ -409,7 +408,6 @@
     <ClInclude Include="Game\Plane.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Library\Camera.h" />
-    <ClInclude Include="Library\DirectXMass.h" />
     <ClInclude Include="Library\GraphicsManager.h" />
     <ClInclude Include="Library\Mesh.h" />
     <ClInclude Include="Library\RenderingObject.h" />

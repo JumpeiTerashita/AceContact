@@ -3,21 +3,21 @@
 #include "..\Engine\GameObject.h"
 #include "..\Library\RenderingObject.h"
 
-class Player;
-typedef std::shared_ptr<Player> SpPlayer;
-class Player : public GameObject
+namespace ktb
 {
-public:
- 
-	SpRenderingObject RenderObj;
-	void Update();
-	static SpPlayer Create();
-	~Player();
-private:
-	Player();
-	void Move();
-	void Shoot();
-	void Delete();
-};
-
-
+	class Player;
+	typedef std::shared_ptr<Player> SpPlayer;
+	class Player : public GameObject
+	{
+	public:
+		SpRenderingObject RenderObj;
+		void Update();
+		static SpPlayer Create();
+		~Player();
+	private:
+		Player();
+		void Move();
+		void Shoot();
+		void Delete();
+	};
+}

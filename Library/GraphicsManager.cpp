@@ -3,6 +3,7 @@
 #include "RenderingObject.h"
 #include <memory>
 
+using namespace ktb;
 
 std::shared_ptr<GraphicsManager> GraphicsManager::Instance = nullptr;
 
@@ -39,14 +40,14 @@ void GraphicsManager::Render()
 	}
 }
 
-bool GraphicsManager::IsInRenderingTexMap(std::string _name)
+bool GraphicsManager::IsInRenderingTexMap(const std::string & _name)
 {
 	auto itr = RenderingTexMap.find(_name);
 	if (itr != RenderingTexMap.end()) return true;
 	else return false;
 }
 
-bool GraphicsManager::IsInRenderingModelMap(std::string _name)
+bool GraphicsManager::IsInRenderingModelMap(const std::string & _name)
 {
 	auto itr = RenderingModelMap.find(_name);
 	if (itr != RenderingModelMap.end()) return true;

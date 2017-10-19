@@ -1,16 +1,23 @@
 #include "Transform.h"
 
 #pragma once
-class Camera
+
+namespace ktb
 {
-public:
-	Camera();
-	~Camera();
-	void SetCamera();
-	D3DXVECTOR3		EyePt;
-	D3DXVECTOR3		LookatPt;
-	D3DXVECTOR3		UpVec;
-private:
-	D3DXMATRIX		View, Proj;
-};
+	class Camera
+	{
+	public:
+		// TODO èàóùèáÅ@ç≈å„Ç∂Ç·ÇÀÅIÅH
+		Camera();
+		~Camera();
+		void SetCamera();
+		D3DXVECTOR3		EyePt;
+		D3DXVECTOR3		LookatPt;
+		D3DXVECTOR3		UpVec;
+	private:
+		D3DXMATRIX		View, Proj;
+	};
+}
+
+
 

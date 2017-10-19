@@ -3,6 +3,8 @@
 #include "GameObjectManager.h"
 #include "..\support\t2k_support.h"
 
+using namespace ktb;
+
 GameObject::GameObject()
 {
 	ObjectName = "None";
@@ -27,13 +29,12 @@ void GameObject::DelObj()
 	GameObjectManager::GetInstance()->DelMap(ObjectName);
 }
 
-D3DXVECTOR3 GameObject::GetForwardVec(D3DXVECTOR3 * Rot, D3DXVECTOR3 * DefaltForward)
+D3DXVECTOR3 GameObject::GetForwardVec(const D3DXVECTOR3 & Rot, const D3DXVECTOR3 & DefaltForward)
 {
 	D3DXVECTOR3 FVec;
 	D3DXMATRIX RM;
 	D3DXMatrixRotationYawPitchRoll(&RM, transform.Rot.y, transform.Rot.x, transform.Rot.z);
-	D3DXVec3TransformCoord(&FVec,DefaltForward, &RM);
-	ForwardVec = FVec;
+	D3DXVec3TransformCoord(&FVec,&DefaltForward, &RM);
 	return FVec;
 }
 
@@ -47,7 +48,7 @@ void GameObject::AddLogicList()
 
 }
 
-void GameObject::AddLogicMap(std::string _name)
+void GameObject::AddLogicMap(const std::string & _name)
 {
 	SpGameObject SpG = Wp_this.lock();
 	if (SpG)
@@ -56,7 +57,7 @@ void GameObject::AddLogicMap(std::string _name)
 	}
 }
 
-SpGameObject GameObject::GetLogicMap(std::string _name)
+SpGameObject GameObject::GetLogicMap(const std::string & _name)
 {
 	auto GameObjMng = GameObjectManager::GetInstance();
 	if (GameObjMng->IsInLogicMap(_name))

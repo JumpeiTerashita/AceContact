@@ -15,6 +15,8 @@
 #include "Game\Plane.h"
 #include <memory>
 
+using namespace ktb;
+
 //LPDIRECT3DTEXTURE9		g_pTex;
 //LPD3DXMESH				g_pMesh;
 
@@ -184,8 +186,9 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 	auto PlayerMap = GameObjectManager::GetInstance()->GetMap("Player");
 	if (PlayerMap)
 	{
+		auto ForwardVec = PlayerMap->GetForwardVec(PlayerMap->transform.Rot);
 		t2k::Support::renderString(5, 20, "PlayerPos : X = %f , Y = %f , Z = %f", PlayerMap->transform.Pos.x, PlayerMap->transform.Pos.y, PlayerMap->transform.Pos.z);
-		t2k::Support::renderString(5, 40, "Forward Vec : X = %f, Y = %f, Z = %f", PlayerMap->ForwardVec.x, PlayerMap->ForwardVec.y, PlayerMap->ForwardVec.z);
+		t2k::Support::renderString(5, 40, "Forward Vec : X = %f, Y = %f, Z = %f", ForwardVec.x, ForwardVec.y, ForwardVec.z);
 	}
 }
 
